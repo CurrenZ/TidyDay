@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#969696</color>
+    <color name="colorPrimaryDark">#666666</color>
+    <color name="colorPrimaryLight">#E0E0E0</color>
+    <color name="colorAccent">#FFA100</color>
+    <color name="colorHabit">#458bab</color>
+    <color name="colorHabitLight">#92BCCF</color>
+    <color name="colorMemo">#dc4c4d</color>
+    <color name="colorMemoLight">#EEA59B</color>
+
+</resources>
