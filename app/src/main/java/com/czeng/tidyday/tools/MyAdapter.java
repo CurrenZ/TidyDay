@@ -10,13 +10,16 @@ import android.widget.TextView;
 
 import com.czeng.tidyday.R;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     private String current_card_type = "";
-    private String[] Titleset;
-    private String[] Subtitleset;
+    private List<String> Titleset;
+    private List<String> Subtitleset;
     private int[] Imageset;
 
     static class MyViewHolder extends RecyclerView.ViewHolder{
@@ -33,7 +36,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 
-    public MyAdapter(String card_type, String[] cards_tittle, String[] cards_detail){
+    public MyAdapter(String card_type, List<String> cards_tittle, List<String> cards_detail){
         //Imageset = card_images;
         current_card_type = card_type;
         Titleset = cards_tittle;
@@ -51,12 +54,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position){
-        holder.card_title_tv.setText(Titleset[position]);
-        holder.card_subtitle_tv.setText(Subtitleset[position]);
+        holder.card_title_tv.setText(Titleset.get(position));
+        holder.card_subtitle_tv.setText(Subtitleset.get(position));
     }
 
     @Override
-    public int getItemCount() { return Titleset.length; }
+    public int getItemCount() { return Titleset.size(); }
 
 
     //DISMISS
