@@ -5,9 +5,11 @@
     android:layout_marginLeft="@dimen/card_margin_side"
     android:layout_marginRight="@dimen/card_margin_side"
     android:layout_marginBottom="@dimen/card_margin_bottom"
+    android:clickable="true"
     cardView:cardCornerRadius="@dimen/card_radius"
     cardView:cardElevation="@dimen/card_elevation"
-    cardView:cardBackgroundColor="@color/colorWhite"
+    cardView:cardBackgroundColor="@android:color/white"
+
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardView="http://schemas.android.com/apk/res-auto">
