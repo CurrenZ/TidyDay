@@ -20,18 +20,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_horizontal_margin">
+            android:padding="@dimen/card_padding">
             <ImageView
                 android:id="@+id/card_image"
                 android:background="@drawable/tidy_day"
-                android:layout_width="55dp"
-                android:layout_height="55dp" />
+                android:layout_width="@dimen/card_image_size"
+                android:layout_height="@dimen/card_image_size" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/activity_horizontal_margin"
+            android:padding="@dimen/card_padding"
             android:orientation="vertical">
 
             <TextView
@@ -39,17 +39,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/card_title_margin_bottom"
-                android:textSize="20sp"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Go to gym"/>
+                android:textSize="@dimen/card_title_size"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <TextView
                 android:id="@+id/card_sub_tittle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/colorPrimary"
-                android:text="You are doing good!"/>
+                android:textSize="@dimen/card_subtitle_size"
+                android:textColor="@color/colorPrimary"/>
 
         </LinearLayout>
 
