@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -20,13 +20,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".add_habit_"
-            android:label="@string/title_activity_add_habit"
+            android:name=".add_goal_memo.add_goal_"
+            android:label="@string/title_activity_add_goal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".add_memo_"
+            android:name=".add_goal_memo.add_memo_"
             android:label="@string/title_activity_add_memo"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.czeng.tidyday.tools.MyAdapter;
 import com.czeng.tidyday.R;
 
-public class memo_class extends Fragment{
+public class goal_class extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class memo_class extends Fragment{
 
         RecyclerView cards_list = (RecyclerView) rootView.findViewById(R.id.Cards_recycler);
         cards_list.setHasFixedSize(true);
-        MyAdapter adapter = new MyAdapter("memo_card", getResources().getStringArray(R.array.memos_title), getResources().getStringArray(R.array.memos_detial));
+        MyAdapter adapter = new MyAdapter("goal_card", getResources().getStringArray(R.array.goals_title), getResources().getStringArray(R.array.goals_status));
         cards_list.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

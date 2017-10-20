@@ -11,7 +11,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
-        android:background="@color/colorMemo"
+        android:background="@color/colorGoal"
         android:fitsSystemWindows="true"
         android:visibility="visible">
 
@@ -36,7 +36,7 @@
                         <ImageView
                             android:paddingTop="@dimen/activity_vertical_margin"
                             android:clickable="true"
-                            android:id="@+id/close_memo_button"
+                            android:id="@+id/close_goal_button"
                             android:src="@drawable/ic_close"
                             android:layout_margin="@dimen/activity_horizontal_margin"
                             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                         <TextView
                             android:paddingTop="@dimen/activity_vertical_margin"
                             android:clickable="true"
-                            android:id="@+id/save_memo_button"
+                            android:id="@+id/save_goal_button"
                             android:text="@string/save"
                             android:textColor="@color/colorWhite"
                             android:textSize="@dimen/text_margin"
@@ -73,13 +73,13 @@
 
                     <EditText
                         android:gravity="bottom"
-                        android:id="@+id/memo_title_et"
+                        android:id="@+id/goal_title_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:textColor="@android:color/white"
                         android:textCursorDrawable="@android:color/white"
-                        android:hint="@string/hint_adding_memo" />
+                        android:hint="@string/hint_adding_goal" />
 
                 </LinearLayout>
 
@@ -104,67 +104,70 @@
             android:paddingTop="0dp">
 
             <TextView
-            android:id="@+id/memo_type_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/memo_s_type"
-            android:textColor="@color/colorMemo"
-            android:textSize="@dimen/text_edit_size" />
+                android:id="@+id/goal_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/goal_s_type"
+                android:textColor="@color/colorGoal"
+                android:textSize="@dimen/text_edit_size" />
 
             <RadioGroup
-                android:id="@+id/radio_memo_types"
+                android:id="@+id/radio_goal_types"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/radioButton4"
+                    android:id="@+id/radioButton1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="@string/memo_type_time" />
+                    android:text="@string/goal_type_good" />
 
                 <RadioButton
-                    android:id="@+id/radioButton5"
+                    android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/memo_type_word" />
+                    android:text="@string/goal_type_bad" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/goal_type_reminder" />
             </RadioGroup>
 
             <TextView
-                android:id="@+id/memo_date_tv"
+                android:id="@+id/goal_repeat_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/date"
-                android:textColor="@color/colorMemo"
+                android:text="@string/repeat"
+                android:textColor="@color/colorGoal"
                 android:textSize="@dimen/text_edit_size" />
 
-            <TextView
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:gravity="center|left"
-                android:id="@+id/memo_the_date"
-                android:layout_width="match_parent"
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/date_text_margin"
-                android:textSize="@dimen/date_text_size"
-                android:textColor="@android:color/black"
-                android:clickable="true"/>
+                android:layout_marginTop="@dimen/text_edit_margin"
+                android:entries="@array/goal_repeat_array" />
 
             <TextView
                 android:id="@+id/goal_add_note_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:textColor="@color/colorMemo"
+                android:textColor="@color/colorGoal"
                 android:textSize="@dimen/text_edit_size"
                 android:text="@string/addnote" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
+>
 
                 <EditText
                     android:id="@+id/goal_add_note__et"
@@ -175,8 +178,6 @@
                     android:textSize="@dimen/text_edit_size" />
 
             </android.support.design.widget.TextInputLayout>
-
-
 
 
         </LinearLayout>

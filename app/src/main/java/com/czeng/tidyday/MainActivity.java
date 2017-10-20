@@ -16,26 +16,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
 
-import com.czeng.tidyday.tabs.habit_class;
+import com.czeng.tidyday.add_goal_memo.add_goal_;
+import com.czeng.tidyday.add_goal_memo.add_memo_;
+import com.czeng.tidyday.tabs.goal_class;
 import com.czeng.tidyday.tabs.memo_class;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView habit_popup, memeo_popup;
     private boolean fab_add_isOpen = false;
-    private boolean fab_habit_isOpen = false;
-    private boolean fab_memo_isOpen = false;
-    private FloatingActionButton fab_add_, fab_habit_, fab_memo_;
+    private FloatingActionButton fab_add_, fab_goal_, fab_memo_;
     private Animation fab_open, fab_close, rotate_fwd, rotate_bwd;
+    private View alpha_backgrond;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private TabLayout tabLayout;
     private int[] tabIcons = {
-            R.drawable.ic_fitness,
-            R.drawable.ic_create
+            R.drawable.ic_goal,
+            R.drawable.ic_memo,
+            R.drawable.ic_goal_dim,
+            R.drawable.ic_memo_dim
     };
 
     @Override
@@ -47,12 +48,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         // fab stuff
         fab_add_ = (FloatingActionButton) findViewById(R.id.fab_add);
-        fab_habit_ = (FloatingActionButton) findViewById(R.id.fab_habit);
+        fab_goal_ = (FloatingActionButton) findViewById(R.id.fab_goal);
         fab_memo_ = (FloatingActionButton) findViewById(R.id.fab_memo);
         fab_open = AnimationUtils.loadAnimation(this,R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(this,R.anim.fab_close);
         rotate_fwd = AnimationUtils.loadAnimation(this,R.anim.rotate_fwd);
         rotate_bwd = AnimationUtils.loadAnimation(this, R.anim.rotate_bwd);
+
 
         fab_add_.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -60,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
                 animateFab();
             }
         });
-        fab_habit_.setOnClickListener(new View.OnClickListener(){
+        fab_goal_.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent_add_habit = new Intent(MainActivity.this, add_habit_.class);
+                Intent intent_add_goal = new Intent(MainActivity.this, add_goal_.class);
                 animate_close_tabs();
-                startActivity(intent_add_habit);
+                startActivity(intent_add_goal);
 
             }
         });
@@ -85,15 +87,24 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        setTabsIc(2);
+        setTabsIc(0);
+        tabLayout.setOnTabSelectedListener(
+                new TabLayout.ViewPagerOnTabSelectedListener(mViewPager){
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        super.onTabSelected(tab);
+                        setTabsIc(tab.getPosition());
+                    }
+                }
+        );
 
     }
 
     private void animate_close_tabs(){
         fab_add_.startAnimation(rotate_bwd);
-        fab_habit_.startAnimation(fab_close);
+        fab_goal_.startAnimation(fab_close);
         fab_memo_.startAnimation(fab_close);
-        fab_habit_.setClickable(false);
+        fab_goal_.setClickable(false);
         fab_memo_.setClickable(false);
         fab_add_isOpen = false;
     }
@@ -104,17 +115,26 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             fab_add_.startAnimation(rotate_fwd);
-            fab_habit_.startAnimation(fab_open);
+            fab_goal_.startAnimation(fab_open);
             fab_memo_.startAnimation(fab_open);
-            fab_habit_.setClickable(true);
+            fab_goal_.setClickable(true);
             fab_memo_.setClickable(true);
             fab_add_isOpen = true;
         }
     }
 
     private void setTabsIc(int tabNum){
-        for (int i = 0; i < tabNum; i ++){
-            tabLayout.getTabAt(i).setIcon(tabIcons[i]);
+        if (tabNum == 0) {
+            tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+            tabLayout.getTabAt(1).setIcon(tabIcons[3]);
+        }
+        else if (tabNum == 1) {
+            tabLayout.getTabAt(0).setIcon(tabIcons[2]);
+            tabLayout.getTabAt(1).setIcon(tabIcons[1]);
+        }
+        else{
+            tabLayout.getTabAt(0).setIcon(tabIcons[0]);
+            tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         }
     }
 
@@ -145,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    return new habit_class();
+                    return new goal_class();
                 case 1:
                     return new memo_class();
             }
@@ -162,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Habits";
+                    return "Goals";
                 case 1:
                     return "Memos";
             }
