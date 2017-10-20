@@ -25,12 +25,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     static class MyViewHolder extends RecyclerView.ViewHolder{
         CardView mCardView;
         TextView card_title_tv, card_subtitle_tv;
-        ImageView card_image;
+        ImageView card_image_iv;
         MyViewHolder(View v){
             super(v);
 
             mCardView = (CardView) v.findViewById(R.id.single_card);
-            card_image = (ImageView) v.findViewById(R.id.image_in_card);
+            card_image_iv = (ImageView) v.findViewById(R.id.card_image);
             card_title_tv = (TextView) v.findViewById(R.id.card_tittle);
             card_subtitle_tv = (TextView) v.findViewById(R.id.card_sub_tittle);
         }
@@ -45,10 +45,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.goal_card, parent, false);
-        if (Objects.equals(current_card_type, "memo_card")) {
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.memo_card, parent, false);
-        }
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card, parent, false);
         return new MyViewHolder(v);
     }
 
