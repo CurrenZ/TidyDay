@@ -10,10 +10,7 @@ import android.widget.TextView;
 
 import com.czeng.tidyday.R;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
@@ -62,5 +59,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     //DISMISS
     public void dismissCard(int pos){
         //Titleset.remove(pos);
+        this.notifyItemRemoved(pos);
     }
 }

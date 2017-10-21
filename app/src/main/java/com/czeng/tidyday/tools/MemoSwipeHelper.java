@@ -3,7 +3,7 @@ package com.czeng.tidyday.tools;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-public class SwipeHelper extends ItemTouchHelper.SimpleCallback{
+public class MemoSwipeHelper extends ItemTouchHelper.SimpleCallback{
     /**
      * Creates a Callback for the given drag and swipe allowance. These values serve as
      * defaults
@@ -23,11 +23,11 @@ public class SwipeHelper extends ItemTouchHelper.SimpleCallback{
 
     MyAdapter adapter;
 
-    public SwipeHelper(int dragDirs, int swipeDirs) {
+    public MemoSwipeHelper(int dragDirs, int swipeDirs) {
         super(dragDirs, swipeDirs);
     }
 
-    public SwipeHelper(MyAdapter adapter) {
+    public MemoSwipeHelper(MyAdapter adapter) {
         super(ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT);
         this.adapter = adapter;
     }
@@ -39,6 +39,6 @@ public class SwipeHelper extends ItemTouchHelper.SimpleCallback{
 
     @Override
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-
+        this.adapter.dismissCard(viewHolder.getAdapterPosition());
     }
 }
