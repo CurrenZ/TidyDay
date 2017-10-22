@@ -7,16 +7,13 @@ public class GoalCardsCollection {
     public static ArrayList<GoalCard> getGoalCards(){
         ArrayList<GoalCard> goalCards = new ArrayList<>();
 
-        GoalCard goal = new GoalCard("Goal 1", "goal 1");
+        GoalCard goal = new GoalCard("Work Out", "Today at 3:30 - 4:30 PM");
         goalCards.add(goal);
 
-        goal = new GoalCard("Goal 1", "goal 1");
+        goal = new GoalCard("Quit Smoke", "You are getting there!");
         goalCards.add(goal);
 
-        goal = new GoalCard("Goal 2", "goal 2");
-        goalCards.add(goal);
-
-        goal = new GoalCard("Goal 4", "goal 4");
+        goal = new GoalCard("Buy Eggs and Milk", "Today at 6:00 PM");
         goalCards.add(goal);
 
         return goalCards;

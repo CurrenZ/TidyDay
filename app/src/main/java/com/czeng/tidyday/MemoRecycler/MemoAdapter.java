@@ -45,4 +45,14 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoHolder>{
          memoCards.remove(pos);
          this.notifyItemRemoved(pos);
      }
+
+    // MOVE
+    public void moveMemoCard(int oldpos, int newpos){
+        this.notifyItemMoved(oldpos, newpos);
+    }
+
+    // ADD
+    public void addGoalCard(){
+
+    }
 }

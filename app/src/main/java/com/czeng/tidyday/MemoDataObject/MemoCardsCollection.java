@@ -6,16 +6,13 @@ public class MemoCardsCollection {
     public static ArrayList<MemoCard> getMemoCards(){
         ArrayList<MemoCard> memoCards = new ArrayList<>();
 
-        MemoCard memo = new MemoCard("Memo 1", "Memo 1");
+        MemoCard memo = new MemoCard("New Car", "It's been 123 days!");
         memoCards.add(memo);
 
-        memo = new MemoCard("Memo 1", "Memo 1");
+        memo = new MemoCard("What I Need", "Serotonin");
         memoCards.add(memo);
 
-        memo = new MemoCard("Memo 2", "Memo 2");
-        memoCards.add(memo);
-
-        memo = new MemoCard("Memo 4", "Memo 4");
+        memo = new MemoCard("Parents Come to Visit", "5 days to go!");
         memoCards.add(memo);
 
         return memoCards;

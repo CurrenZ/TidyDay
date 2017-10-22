@@ -21,7 +21,8 @@ public class GoalSwipeHelper extends ItemTouchHelper.SimpleCallback{
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-        return false;
+        adapter.moveGoalCard(viewHolder.getAdapterPosition(), target.getAdapterPosition());
+        return true;
     }
 
     @Override

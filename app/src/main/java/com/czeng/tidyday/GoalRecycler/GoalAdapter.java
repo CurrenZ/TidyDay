@@ -45,4 +45,14 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
          goalCards.remove(pos);
          this.notifyItemRemoved(pos);
      }
+
+     // MOVE
+    public void moveGoalCard(int oldpos, int newpos){
+        this.notifyItemMoved(oldpos, newpos);
+    }
+
+    // ADD
+    public void addGoalCard(){
+
+    }
 }
