@@ -9,36 +9,39 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.czeng.tidyday.tools.MemoSwipeHelper;
-import com.czeng.tidyday.tools.MyAdapter;
-import com.czeng.tidyday.R;
 
-import java.util.Arrays;
-import java.util.List;
+import com.czeng.tidyday.MemoDataObject.MemoCard;
+import com.czeng.tidyday.MemoDataObject.MemoCardsCollection;
+import com.czeng.tidyday.MemoRecycler.MemoAdapter;
+import com.czeng.tidyday.R;
+import com.czeng.tidyday.Swiper.MemoSwipeHelper;
+
+import java.util.ArrayList;
 
 public class memo_class extends Fragment{
 
-    List<String> Title;
-    List<String> Detail;
+    RecyclerView rv;
+    MemoAdapter adapter;
+    ArrayList<MemoCard> memoCards;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.tab_layout, container, false);
-        Title = Arrays.asList(getResources().getStringArray(R.array.memos_title));
-        Detail = Arrays.asList(getResources().getStringArray(R.array.memos_detial));
 
-        RecyclerView cards_list = (RecyclerView) rootView.findViewById(R.id.Cards_recycler);
-        cards_list.setHasFixedSize(false);
-        MyAdapter adapter = new MyAdapter("memo_card", Title, Detail);
-        cards_list.setAdapter(adapter);
+        // RECYCLER
+        rv = (RecyclerView) rootView.findViewById(R.id.Cards_recycler);
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        // DATA
+        memoCards = MemoCardsCollection.getMemoCards();
+
+        // ADAPTER
+        adapter = new MemoAdapter(getActivity(), memoCards);
+        rv.setAdapter(adapter);
 
         ItemTouchHelper.Callback callback = new MemoSwipeHelper(adapter);
         ItemTouchHelper helper = new ItemTouchHelper(callback);
-        helper.attachToRecyclerView(cards_list);
-
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        cards_list.setLayoutManager(llm);
+        helper.attachToRecyclerView(rv);
 
         return rootView;
     }
