@@ -39,64 +39,194 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:text="@string/goal_type_good"
                     android:checked="true"
-                    android:text="@string/goal_type_good" />
+                    android:onClick="GoalTypeSelected"/>
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/goal_type_bad" />
+                    android:text="@string/goal_type_bad"
+                    android:onClick="GoalTypeSelected"/>
 
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/goal_type_reminder" />
+                    android:text="@string/goal_type_reminder"
+                    android:onClick="GoalTypeSelected"/>
             </RadioGroup>
 
-            <TextView
-                android:id="@+id/goal_repeat_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/repeat"
-                android:textColor="@color/colorGoal"
-                android:textSize="@dimen/text_edit_size" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/text_edit_margin"
-                android:entries="@array/goal_repeat_array" />
-
-            <TextView
-                android:id="@+id/goal_add_note_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:textColor="@color/colorGoal"
-                android:textSize="@dimen/text_edit_size"
-                android:text="@string/addnote" />
-
-            <android.support.design.widget.TextInputLayout
+            <LinearLayout
+                android:id="@+id/repeat_section"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
->
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/goal_add_note__et"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
-                    android:textColor="@color/colorPrimaryDark"
+                <TextView
+                    android:id="@+id/goal_repeat_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:text="@string/repeat"
+                    android:textColor="@color/colorGoal"
                     android:textSize="@dimen/text_edit_size" />
 
-            </android.support.design.widget.TextInputLayout>
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_edit_margin"
+                    android:entries="@array/goal_repeat_array" />
+                <LinearLayout
+                    android:id="@+id/daily"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
+                    <ToggleButton
+                        android:id="@+id/tb_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/morning"
+                        android:textOn="@string/morning"/>
+
+                    <ToggleButton
+                        android:id="@+id/tb_noon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/noon"
+                        android:textOn="@string/noon" />
+
+                    <ToggleButton
+                        android:id="@+id/tb_night"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/night"
+                        android:textOn="@string/night" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/weekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <ToggleButton
+                        android:id="@+id/tb_Sun"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/s"
+                        android:textOn="@string/s"/>
+
+                    <ToggleButton
+                        android:id="@+id/tb_Mon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/m"
+                        android:textOn="@string/m" />
+
+                    <ToggleButton
+                        android:id="@+id/tb_Tue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/t"
+                        android:textOn="@string/t" />
+
+                    <ToggleButton
+                        android:id="@+id/tb_Wed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/w"
+                        android:textOn="@string/w"/>
+
+                    <ToggleButton
+                        android:id="@+id/tb_Thu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/t"
+                        android:textOn="@string/t" />
+
+                    <ToggleButton
+                        android:id="@+id/tb_Fri"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/f"
+                        android:textOn="@string/f" />
+
+                    <ToggleButton
+                        android:id="@+id/tb_Sat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/s"
+                        android:textOn="@string/s"/>
+
+                </LinearLayout>
+
+                <RadioGroup
+                    android:visibility="gone"
+                    android:id="@+id/monthly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/rb_monthly_sameday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/on_the_same_day_each_month" />
+
+                    <RadioButton
+                        android:id="@+id/rb_monthly_xth_xday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/on_every_forth_sunday" />
+                </RadioGroup>
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/annually"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/small_pading"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/every"
+                        android:textColor="@android:color/black"/>
+                    <EditText
+                        android:id="@+id/every_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textColor="@color/colorGoal"
+                        android:text="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/year"
+                        android:textColor="@android:color/black"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

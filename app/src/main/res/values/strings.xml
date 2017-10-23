@@ -21,9 +21,10 @@
     <string name="addnote">Add note</string>
 
     <string-array name="goal_repeat_array">
-        <item> Everyday </item>
-        <item> Every week </item>
-        <item> Every month </item>
+        <item> Daily </item>
+        <item> Weekly </item>
+        <item> Monthly </item>
+        <item> Annually </item>
     </string-array>
 
     <string name="hint_adding_memo">Enter your memo here …</string>
@@ -55,6 +56,18 @@
     </string-array>
 
     <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="morning">Morning</string>
+    <string name="night">Night</string>
+    <string name="noon">Noon</string>
+    <string name="s">S</string>
+    <string name="m">M</string>
+    <string name="t">T</string>
+    <string name="w">W</string>
+    <string name="f">F</string>
+    <string name="on_the_same_day_each_month">On the same day each month</string>
+    <string name="on_every_forth_sunday">On every forth Sunday</string>
+    <string name="every">Every</string>
+    <string name="year">year</string>
 
 
 </resources>
