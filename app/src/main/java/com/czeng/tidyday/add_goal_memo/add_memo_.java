@@ -68,4 +68,8 @@ public class add_memo_ extends AppCompatActivity {
     public void Close(View view) {
         finish();
     }
+
+    public void SaveAndClose_MEMO(View view) {
+        finish();
+    }
 }

@@ -79,12 +79,12 @@
                     android:id="@+id/spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/text_edit_margin"
-                    android:entries="@array/goal_repeat_array" />
+                    android:layout_marginTop="@dimen/text_edit_margin" />
                 <LinearLayout
                     android:id="@+id/daily"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:paddingTop="@dimen/normal_padding"
                     android:orientation="horizontal">
 
                     <ToggleButton
@@ -117,6 +117,7 @@
                     android:id="@+id/weekly"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:paddingTop="@dimen/normal_padding"
                     android:orientation="horizontal">
                     <ToggleButton
                         android:id="@+id/tb_Sun"
@@ -176,26 +177,34 @@
 
                 </LinearLayout>
 
-                <RadioGroup
-                    android:visibility="gone"
+                <LinearLayout
                     android:id="@+id/monthly"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_monthly_sameday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/on_the_same_day_each_month" />
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
 
-                    <RadioButton
-                        android:id="@+id/rb_monthly_xth_xday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/on_every_forth_sunday" />
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/rb_monthly_sameday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/on_the_same_day_each_month" />
+
+                        <RadioButton
+                            android:id="@+id/rb_monthly_xth_xday"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/on_every_forth_sunday" />
+                    </RadioGroup>
+
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -203,7 +212,7 @@
                     android:id="@+id/annually"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/small_pading"
+                    android:padding="@dimen/normal_padding"
                     android:orientation="horizontal">
 
                     <TextView
@@ -217,7 +226,8 @@
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:textColor="@color/colorGoal"
-                        android:text="1"/>
+                        android:text="@string/_1"
+                        android:selectAllOnFocus="true"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -285,7 +295,8 @@
                             android:paddingTop="@dimen/activity_vertical_margin"
                             android:text="@string/save"
                             android:textColor="@android:color/white"
-                            android:textSize="@dimen/text_margin" />
+                            android:textSize="@dimen/text_margin"
+                            android:onClick="SaveAndCloseGoal"/>
                     </LinearLayout>
 
                 </LinearLayout>

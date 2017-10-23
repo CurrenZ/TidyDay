@@ -15,7 +15,8 @@
     <dimen name="card_title_size">20sp</dimen>
     <dimen name="card_subtitle_size">16sp</dimen>
 
-    <dimen name="small_pading">4dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
+    <dimen name="normal_padding">8dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
 

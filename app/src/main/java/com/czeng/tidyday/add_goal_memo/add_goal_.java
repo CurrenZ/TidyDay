@@ -6,18 +6,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.czeng.tidyday.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class add_goal_ extends AppCompatActivity {
 
     LinearLayout ll_repeatsection;
+    Spinner sp;
+
+    LinearLayout DailyOption, WeeklyOption, MonthlyOption, Annually;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +40,62 @@ public class add_goal_ extends AppCompatActivity {
 
         ll_repeatsection = (LinearLayout) findViewById(R.id.repeat_section);
 
+        DailyOption = (LinearLayout) findViewById(R.id.daily);
+        WeeklyOption = (LinearLayout) findViewById(R.id.weekly);
+        MonthlyOption = (LinearLayout) findViewById(R.id.monthly);
+        Annually = (LinearLayout) findViewById(R.id.annually);
 
-    }
 
-    public void Close(View view) {
-        finish();
+        sp = (Spinner) findViewById(R.id.spinner);
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("Daily");
+        list.add("Weekly");
+        list.add("Monthly");
+        list.add("Annually");
+        ArrayAdapter<String> adpater = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, list);
+        adpater.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        sp.setAdapter(adpater);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    default:
+                        DailyOption.setVisibility(View.GONE);
+                        WeeklyOption.setVisibility(View.GONE);
+                        MonthlyOption.setVisibility(View.GONE);
+                        Annually.setVisibility(View.GONE);
+                    case 0:
+                        DailyOption.setVisibility(View.VISIBLE);
+                        WeeklyOption.setVisibility(View.GONE);
+                        MonthlyOption.setVisibility(View.GONE);
+                        Annually.setVisibility(View.GONE);
+                        break;
+                    case 1:
+                        DailyOption.setVisibility(View.GONE);
+                        WeeklyOption.setVisibility(View.VISIBLE);
+                        MonthlyOption.setVisibility(View.GONE);
+                        Annually.setVisibility(View.GONE);
+                        break;
+                    case 2:
+                        DailyOption.setVisibility(View.GONE);
+                        WeeklyOption.setVisibility(View.GONE);
+                        MonthlyOption.setVisibility(View.VISIBLE);
+                        Annually.setVisibility(View.GONE);
+                        break;
+                    case 3:
+                        DailyOption.setVisibility(View.GONE);
+                        WeeklyOption.setVisibility(View.GONE);
+                        MonthlyOption.setVisibility(View.GONE);
+                        Annually.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void GoalTypeSelected(View view) {
@@ -55,4 +116,11 @@ public class add_goal_ extends AppCompatActivity {
         }
     }
 
+    public void Close(View view) {
+        finish();
+    }
+
+    public void SaveAndCloseGoal(View view) {
+        finish();
+    }
 }
