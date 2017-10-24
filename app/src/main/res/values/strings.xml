@@ -67,7 +67,7 @@
     <string name="on_the_same_day_each_month">On the same day each month</string>
     <string name="on_every_forth_sunday">On every forth Sunday</string>
     <string name="every">Every</string>
-    <string name="year">year</string>
+    <string name="year">year on</string>
     <string name="_1">1</string>
     <string name="select_a_different_time">Select a different time</string>
     <string name="urgent">Urgent</string>
@@ -76,7 +76,8 @@
     <string name="priority">Priority</string>
     <string name="notification_time">Notification Time</string>
     <string name="those_words">Those words</string>
-    <string name="here_goes">Here goes ...</string>
+    <string name="here_goes">Here goes …</string>
+    <string name="on_selected_days_at">On selected days at</string>
 
 
 </resources>

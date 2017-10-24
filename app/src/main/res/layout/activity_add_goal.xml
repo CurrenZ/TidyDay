@@ -200,6 +200,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/weekly"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -279,21 +280,22 @@
                             android:paddingTop="@dimen/normal_padding"
                             android:paddingLeft="@dimen/small_padding"
                             android:textColor="@android:color/black"
-                            android:text="On selected days at "/>
+                            android:text="@string/on_selected_days_at"/>
 
                         <TextView
                             android:id="@+id/weekly_time"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:paddingTop="@dimen/normal_padding"
-                            android:textColor="@android:color/black"
-                            android:text="6:00 PM"/>
+                            android:paddingLeft="@dimen/small_padding"
+                            android:textColor="@android:color/black" />
                     </LinearLayout>
 
                 </LinearLayout>
 
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/monthly"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -312,11 +314,11 @@
                             android:gravity="center|left">
 
                             <TextView
+                                android:clickable="true"
                                 android:id="@+id/monthly_date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
-                                android:text="Fri, Oct 28, 2017"/>
+                                android:textColor="@android:color/black" />
 
                         </LinearLayout>
 
@@ -328,11 +330,11 @@
                             android:gravity="center|right">
 
                             <TextView
+                                android:clickable="true"
                                 android:id="@+id/monthly_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
-                                android:text="6:00 PM"/>
+                                android:textColor="@android:color/black" />
 
                         </LinearLayout>
 
@@ -363,6 +365,7 @@
 
 
                 <LinearLayout
+                    android:visibility="visible"
                     android:id="@+id/annually"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -384,12 +387,20 @@
                         android:selectAllOnFocus="true"
                         android:text="@string/_1"
                         android:textColor="@color/colorGoal" />
-
+`
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/year"
                         android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:paddingLeft="@dimen/small_padding"
+                        android:id="@+id/annually_date"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"/>
+
                 </LinearLayout>
 
 
@@ -475,8 +486,7 @@
                                 android:id="@+id/onetime_date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
-                                android:text="Fri, Oct 28, 2017"/>
+                                android:textColor="@android:color/black" />
 
                         </LinearLayout>
 
@@ -491,8 +501,7 @@
                                 android:id="@+id/onetime_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@android:color/black"
-                                android:text="6:00 PM"/>
+                                android:textColor="@android:color/black"/>
 
                         </LinearLayout>
 
