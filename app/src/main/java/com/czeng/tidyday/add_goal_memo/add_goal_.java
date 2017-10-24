@@ -1,7 +1,6 @@
 package com.czeng.tidyday.add_goal_memo;
 
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -23,7 +22,7 @@ import java.util.List;
 
 public class add_goal_ extends AppCompatActivity {
 
-    LinearLayout ll_repeatsection;
+    LinearLayout ll_repeatsection, ll_qbpsection, ll_otnotificationsection;
     Spinner sp;
 
     LinearLayout DailyOption, WeeklyOption, MonthlyOption, Annually;
@@ -39,6 +38,8 @@ public class add_goal_ extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         ll_repeatsection = (LinearLayout) findViewById(R.id.repeat_section);
+        ll_qbpsection = (LinearLayout) findViewById(R.id.quit_bad_priority_section);
+        ll_otnotificationsection = (LinearLayout) findViewById(R.id.onetime_notification_section);
 
         DailyOption = (LinearLayout) findViewById(R.id.daily);
         WeeklyOption = (LinearLayout) findViewById(R.id.weekly);
@@ -104,14 +105,20 @@ public class add_goal_ extends AppCompatActivity {
             case R.id.radioButton1:
                 if (checked)
                     ll_repeatsection.setVisibility(View.VISIBLE);
+                    ll_qbpsection.setVisibility(View.GONE);
+                    ll_otnotificationsection.setVisibility(View.GONE);
                 break;
             case R.id.radioButton2:
                 if (checked)
                     ll_repeatsection.setVisibility(View.GONE);
+                    ll_qbpsection.setVisibility(View.VISIBLE);
+                    ll_otnotificationsection.setVisibility(View.GONE);
                 break;
             case R.id.radioButton3:
                 if (checked)
                     ll_repeatsection.setVisibility(View.GONE);
+                    ll_qbpsection.setVisibility(View.GONE);
+                    ll_otnotificationsection.setVisibility(View.VISIBLE);
                 break;
         }
     }

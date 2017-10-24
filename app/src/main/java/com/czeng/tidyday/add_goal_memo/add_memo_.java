@@ -7,6 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.czeng.tidyday.R;
@@ -14,6 +16,7 @@ import com.czeng.tidyday.R;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class add_memo_ extends AppCompatActivity {
 
@@ -21,8 +24,9 @@ public class add_memo_ extends AppCompatActivity {
 
     public Calendar cal = Calendar.getInstance();
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
-    private DateFormat date_format = DateFormat.getDateInstance();
+    private SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM dd, yyyy");
+
+    LinearLayout ll_memorydatesection, ll_notesection;
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -44,6 +48,10 @@ public class add_memo_ extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
+        ll_memorydatesection = (LinearLayout) findViewById(R.id.memory_date_section);
+        ll_notesection = (LinearLayout) findViewById(R.id.note_section);
+
+
         long date = System.currentTimeMillis();
         String dateString = sdf.format(date);
         memo_date = (TextView) findViewById(R.id.memo_the_date);
@@ -62,7 +70,25 @@ public class add_memo_ extends AppCompatActivity {
     }
 
     private void updateDateTextView() {
-        memo_date.setText(date_format.format(cal.getTime()));
+        memo_date.setText(sdf.format(cal.getTime().getTime()));
+
+    }
+
+    public void MemoTypeSelected(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.radioButton4:
+                if (checked)
+                    ll_memorydatesection.setVisibility(View.VISIBLE);
+                    ll_notesection.setVisibility(View.GONE);
+                break;
+            case R.id.radioButton5:
+                if (checked)
+                    ll_memorydatesection.setVisibility(View.GONE);
+                    ll_notesection.setVisibility(View.VISIBLE);
+                break;
+        }
+
     }
 
     public void Close(View view) {
@@ -72,4 +98,5 @@ public class add_memo_ extends AppCompatActivity {
     public void SaveAndClose_MEMO(View view) {
         finish();
     }
+
 }

@@ -124,6 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
+                    android:onClick="MemoTypeSelected"
                     android:text="@string/memo_type_time" />
 
                 <RadioButton
@@ -131,55 +132,68 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="MemoTypeSelected"
                     android:text="@string/memo_type_word" />
             </RadioGroup>
 
-            <TextView
-                android:id="@+id/memo_date_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/date"
-                android:textColor="@color/colorMemo"
-                android:textSize="@dimen/text_edit_size" />
-
-            <TextView
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:gravity="center|left"
-                android:id="@+id/memo_the_date"
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/memory_date_section"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/date_text_margin"
-                android:textSize="@dimen/date_text_size"
-                android:textColor="@android:color/black"
-                android:clickable="true"/>
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/normal_padding"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/goal_add_note_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:textColor="@color/colorMemo"
-                android:textSize="@dimen/text_edit_size"
-                android:text="@string/addnote" />
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-
-                <EditText
-                    android:id="@+id/goal_add_note__et"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="textCapSentences|textAutoCorrect|textMultiLine"
-                    android:textColor="@color/colorPrimaryDark"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date"
+                    android:textColor="@color/colorMemo"
                     android:textSize="@dimen/text_edit_size" />
 
-            </android.support.design.widget.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/normal_padding"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:clickable="true"
+                        android:id="@+id/memo_the_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/note_section"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/normal_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/those_words"
+                    android:textColor="@color/colorMemo"
+                    android:textSize="@dimen/text_edit_size" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textAutoCorrect|textCapSentences|textLongMessage|textMultiLine"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/note_size"
+                        android:hint="@string/here_goes"
+                        android:textColorHint="@color/colorPrimaryDark"/>
 
 
-
+            </LinearLayout>
 
         </LinearLayout>
 

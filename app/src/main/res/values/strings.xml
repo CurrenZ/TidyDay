@@ -69,6 +69,14 @@
     <string name="every">Every</string>
     <string name="year">year</string>
     <string name="_1">1</string>
+    <string name="select_a_different_time">Select a different time</string>
+    <string name="urgent">Urgent</string>
+    <string name="important">Important</string>
+    <string name="normal">Normal</string>
+    <string name="priority">Priority</string>
+    <string name="notification_time">Notification Time</string>
+    <string name="those_words">Those words</string>
+    <string name="here_goes">Here goes ...</string>
 
 
 </resources>

@@ -7,242 +7,6 @@
     android:fitsSystemWindows="true"
     tools:context="com.czeng.tidyday.add_goal_memo.add_goal_">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/app_bar_height">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="0dp">
-
-            <TextView
-                android:id="@+id/goal_type_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/goal_s_type"
-                android:textColor="@color/colorGoal"
-                android:textSize="@dimen/text_edit_size" />
-
-            <RadioGroup
-                android:id="@+id/radio_goal_types"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/radioButton1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/goal_type_good"
-                    android:checked="true"
-                    android:onClick="GoalTypeSelected"/>
-
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/goal_type_bad"
-                    android:onClick="GoalTypeSelected"/>
-
-                <RadioButton
-                    android:id="@+id/radioButton3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/goal_type_reminder"
-                    android:onClick="GoalTypeSelected"/>
-            </RadioGroup>
-
-            <LinearLayout
-                android:id="@+id/repeat_section"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/goal_repeat_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:text="@string/repeat"
-                    android:textColor="@color/colorGoal"
-                    android:textSize="@dimen/text_edit_size" />
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/text_edit_margin" />
-                <LinearLayout
-                    android:id="@+id/daily"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="@dimen/normal_padding"
-                    android:orientation="horizontal">
-
-                    <ToggleButton
-                        android:id="@+id/tb_morning"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/morning"
-                        android:textOn="@string/morning"/>
-
-                    <ToggleButton
-                        android:id="@+id/tb_noon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/noon"
-                        android:textOn="@string/noon" />
-
-                    <ToggleButton
-                        android:id="@+id/tb_night"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/night"
-                        android:textOn="@string/night" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/weekly"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="@dimen/normal_padding"
-                    android:orientation="horizontal">
-                    <ToggleButton
-                        android:id="@+id/tb_Sun"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/s"
-                        android:textOn="@string/s"/>
-
-                    <ToggleButton
-                        android:id="@+id/tb_Mon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/m"
-                        android:textOn="@string/m" />
-
-                    <ToggleButton
-                        android:id="@+id/tb_Tue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/t"
-                        android:textOn="@string/t" />
-
-                    <ToggleButton
-                        android:id="@+id/tb_Wed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/w"
-                        android:textOn="@string/w"/>
-
-                    <ToggleButton
-                        android:id="@+id/tb_Thu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/t"
-                        android:textOn="@string/t" />
-
-                    <ToggleButton
-                        android:id="@+id/tb_Fri"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/f"
-                        android:textOn="@string/f" />
-
-                    <ToggleButton
-                        android:id="@+id/tb_Sat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textOff="@string/s"
-                        android:textOn="@string/s"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/monthly"
-                    android:visibility="gone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
-
-                        <RadioButton
-                            android:id="@+id/rb_monthly_sameday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:checked="true"
-                            android:text="@string/on_the_same_day_each_month" />
-
-                        <RadioButton
-                            android:id="@+id/rb_monthly_xth_xday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/on_every_forth_sunday" />
-                    </RadioGroup>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/annually"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/normal_padding"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/every"
-                        android:textColor="@android:color/black"/>
-                    <EditText
-                        android:id="@+id/every_year"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="number"
-                        android:textColor="@color/colorGoal"
-                        android:text="@string/_1"
-                        android:selectAllOnFocus="true"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/year"
-                        android:textColor="@android:color/black"/>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-    </ScrollView>
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -328,5 +92,419 @@
         </RelativeLayout>
 
     </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/app_bar_height">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="0dp">
+
+            <TextView
+                android:id="@+id/goal_type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/goal_s_type"
+                android:textColor="@color/colorGoal"
+                android:textSize="@dimen/text_edit_size" />
+
+            <RadioGroup
+                android:id="@+id/radio_goal_types"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:onClick="GoalTypeSelected"
+                    android:text="@string/goal_type_good" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="GoalTypeSelected"
+                    android:text="@string/goal_type_bad" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:onClick="GoalTypeSelected"
+                    android:text="@string/goal_type_reminder" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/repeat_section"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/normal_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/goal_repeat_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/repeat"
+                    android:textColor="@color/colorGoal"
+                    android:textSize="@dimen/text_edit_size" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_edit_margin" />
+
+                <LinearLayout
+                    android:id="@+id/daily"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/normal_padding"
+                    android:orientation="horizontal">
+
+                    <ToggleButton
+                        android:id="@+id/tb_morning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/morning"
+                        android:textOn="@string/morning" />
+
+                    <ToggleButton
+                        android:id="@+id/tb_noon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/noon"
+                        android:textOn="@string/noon" />
+
+                    <ToggleButton
+                        android:id="@+id/tb_night"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textOff="@string/night"
+                        android:textOn="@string/night" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/weekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/normal_padding"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ToggleButton
+                            android:id="@+id/tb_Sun"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textOff="@string/s"
+                            android:textOn="@string/s" />
+
+                        <ToggleButton
+                            android:id="@+id/tb_Mon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textOff="@string/m"
+                            android:textOn="@string/m" />
+
+                        <ToggleButton
+                            android:id="@+id/tb_Tue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textOff="@string/t"
+                            android:textOn="@string/t" />
+
+                        <ToggleButton
+                            android:id="@+id/tb_Wed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textOff="@string/w"
+                            android:textOn="@string/w" />
+
+                        <ToggleButton
+                            android:id="@+id/tb_Thu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textOff="@string/t"
+                            android:textOn="@string/t" />
+
+                        <ToggleButton
+                            android:id="@+id/tb_Fri"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textOff="@string/f"
+                            android:textOn="@string/f" />
+
+                        <ToggleButton
+                            android:id="@+id/tb_Sat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textOff="@string/s"
+                            android:textOn="@string/s" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/normal_padding"
+                            android:paddingLeft="@dimen/small_padding"
+                            android:textColor="@android:color/black"
+                            android:text="On selected days at "/>
+
+                        <TextView
+                            android:id="@+id/weekly_time"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/normal_padding"
+                            android:textColor="@android:color/black"
+                            android:text="6:00 PM"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/monthly"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/normal_padding"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center|left">
+
+                            <TextView
+                                android:id="@+id/monthly_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:text="Fri, Oct 28, 2017"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingRight="@dimen/activity_horizontal_margin"
+                            android:gravity="center|right">
+
+                            <TextView
+                                android:id="@+id/monthly_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:text="6:00 PM"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/rb_monthly_sameday"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="@string/on_the_same_day_each_month" />
+
+                        <RadioButton
+                            android:id="@+id/rb_monthly_xth_xday"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="@string/on_every_forth_sunday" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/annually"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/normal_padding"
+                    android:paddingRight="@dimen/normal_padding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/every"
+                        android:textColor="@android:color/black" />
+
+                    <EditText
+                        android:id="@+id/every_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:selectAllOnFocus="true"
+                        android:text="@string/_1"
+                        android:textColor="@color/colorGoal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/year"
+                        android:textColor="@android:color/black" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/quit_bad_priority_section"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/normal_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/priority"
+                    android:textColor="@color/colorGoal"
+                    android:textSize="@dimen/text_edit_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RadioButton
+                        android:id="@+id/quit_bad_priority_urgent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/urgent" />
+
+                    <RadioButton
+                        android:id="@+id/quit_bad_priority_important"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/important" />
+
+                    <RadioButton
+                        android:id="@+id/quit_bad_priority_normal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/normal" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/onetime_notification_section"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/normal_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notification_time"
+                    android:textColor="@color/colorGoal"
+                    android:textSize="@dimen/text_edit_size" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/normal_padding"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center|left">
+
+                            <TextView
+                                android:id="@+id/onetime_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:text="Fri, Oct 28, 2017"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingRight="@dimen/activity_horizontal_margin"
+                            android:gravity="center|right">
+
+                            <TextView
+                                android:id="@+id/onetime_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:text="6:00 PM"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout>
