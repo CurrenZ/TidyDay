@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 case 0:
                     return "Goals";
                 case 1:
-                    return "Memos";
+                    return "Momnets";
             }
             return null;
         }

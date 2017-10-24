@@ -27,8 +27,8 @@
         <item> Annually </item>
     </string-array>
 
-    <string name="hint_adding_memo">Enter your memo here …</string>
-    <string name="memo_s_type">Memo\'s Type</string>
+    <string name="hint_adding_memo">Enter your moment here …</string>
+    <string name="memo_s_type">This moment</string>
     <string name="memo_type_time">Memory of times</string>
     <string name="memo_type_word">Memory of words</string>
     <string name="date">Date of the memory</string>

@@ -50,7 +50,7 @@
         android:layout_marginRight="@dimen/fab_margin"
         android:visibility="invisible"
         app:backgroundTint="@color/colorGoal"
-        app:srcCompat="@drawable/ic_goal" />
+        app:srcCompat="@drawable/ic_add_goal" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_memo"
@@ -62,7 +62,7 @@
         android:layout_marginRight="@dimen/fab_margin"
         android:visibility="invisible"
         app:backgroundTint="@color/colorMemo"
-        app:srcCompat="@drawable/ic_memo" />
+        app:srcCompat="@drawable/ic_add_memo" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_add"
