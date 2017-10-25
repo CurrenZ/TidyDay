@@ -4,6 +4,7 @@
     <color name="colorPrimary">#969696</color>
     <color name="colorPrimaryDark">#666666</color>
     <color name="colorPrimaryLight">#E0E0E0</color>
+    <color name="colorPrimaryLight_alpha">#CCFFFFFF</color>
     <color name="colorAccent">#ffa100</color>
     <color name="colorGoal">#458bab</color>
     <color name="colorGoalLight">#92BCCF</color>

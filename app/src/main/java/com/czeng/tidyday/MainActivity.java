@@ -1,5 +1,6 @@
 package com.czeng.tidyday;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -26,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean fab_add_isOpen = false;
     private FloatingActionButton fab_add_, fab_goal_, fab_memo_;
-    private Animation fab_open, fab_close, rotate_fwd, rotate_bwd;
-    private View alpha_backgrond;
+    private Animation fab_open, fab_close, rotate_fwd, rotate_bwd, fade_in, fade_out;
+    private View v_fab_cover;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         fab_close = AnimationUtils.loadAnimation(this,R.anim.fab_close);
         rotate_fwd = AnimationUtils.loadAnimation(this,R.anim.rotate_fwd);
         rotate_bwd = AnimationUtils.loadAnimation(this, R.anim.rotate_bwd);
+        fade_in = AnimationUtils.loadAnimation(this, R.anim.fadein);
+        fade_out = AnimationUtils.loadAnimation(this,R.anim.fadeout);
+        v_fab_cover = (View) findViewById(R.id.fabCover);
 
 
         fab_add_.setOnClickListener(new View.OnClickListener(){
@@ -80,6 +84,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        v_fab_cover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                animate_close_tabs();
+            }
+        });
 
         // tab stuff
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -93,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
                         super.onTabSelected(tab);
+                        animate_close_tabs();
                         setTabsIc(tab.getPosition());
                     }
                 }
@@ -101,12 +112,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void animate_close_tabs(){
-        fab_add_.startAnimation(rotate_bwd);
-        fab_goal_.startAnimation(fab_close);
-        fab_memo_.startAnimation(fab_close);
-        fab_goal_.setClickable(false);
-        fab_memo_.setClickable(false);
-        fab_add_isOpen = false;
+        if (fab_add_isOpen){
+            fab_add_.startAnimation(rotate_bwd);
+            fab_goal_.startAnimation(fab_close);
+            fab_memo_.startAnimation(fab_close);
+            v_fab_cover.startAnimation(fade_out);
+            fab_goal_.setClickable(false);
+            fab_memo_.setClickable(false);
+            v_fab_cover.setClickable(false);
+            v_fab_cover.setVisibility(View.GONE);
+            fab_add_isOpen = false;
+        }
     }
 
     private void animateFab(){
@@ -117,8 +133,11 @@ public class MainActivity extends AppCompatActivity {
             fab_add_.startAnimation(rotate_fwd);
             fab_goal_.startAnimation(fab_open);
             fab_memo_.startAnimation(fab_open);
+            v_fab_cover.startAnimation(fade_in);
             fab_goal_.setClickable(true);
             fab_memo_.setClickable(true);
+            v_fab_cover.setClickable(true);
+            v_fab_cover.setVisibility(View.VISIBLE);
             fab_add_isOpen = true;
         }
     }
@@ -138,26 +157,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
