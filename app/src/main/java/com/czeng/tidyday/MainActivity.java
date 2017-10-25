@@ -1,6 +1,5 @@
 package com.czeng.tidyday;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -12,8 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -27,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean fab_add_isOpen = false;
     private FloatingActionButton fab_add_, fab_goal_, fab_memo_;
-    private Animation fab_open, fab_close, rotate_fwd, rotate_bwd, fade_in, fade_out;
+    private Animation fab_open_up, fab_close_up, fab_open_low, fab_close_low, rotate_fwd, rotate_bwd, fade_in, fade_out;
     private View v_fab_cover;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -51,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
         fab_add_ = (FloatingActionButton) findViewById(R.id.fab_add);
         fab_goal_ = (FloatingActionButton) findViewById(R.id.fab_goal);
         fab_memo_ = (FloatingActionButton) findViewById(R.id.fab_memo);
-        fab_open = AnimationUtils.loadAnimation(this,R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(this,R.anim.fab_close);
+        fab_open_up = AnimationUtils.loadAnimation(this,R.anim.fab_open_up);
+        fab_close_up = AnimationUtils.loadAnimation(this,R.anim.fab_close_up);
+        fab_open_low = AnimationUtils.loadAnimation(this,R.anim.fab_open_low);
+        fab_close_low = AnimationUtils.loadAnimation(this,R.anim.fab_close_low);
         rotate_fwd = AnimationUtils.loadAnimation(this,R.anim.rotate_fwd);
         rotate_bwd = AnimationUtils.loadAnimation(this, R.anim.rotate_bwd);
         fade_in = AnimationUtils.loadAnimation(this, R.anim.fadein);
@@ -114,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
     private void animate_close_tabs(){
         if (fab_add_isOpen){
             fab_add_.startAnimation(rotate_bwd);
-            fab_goal_.startAnimation(fab_close);
-            fab_memo_.startAnimation(fab_close);
+            fab_goal_.startAnimation(fab_close_up);
+            fab_memo_.startAnimation(fab_close_low);
             v_fab_cover.startAnimation(fade_out);
             fab_goal_.setClickable(false);
             fab_memo_.setClickable(false);
@@ -131,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             fab_add_.startAnimation(rotate_fwd);
-            fab_goal_.startAnimation(fab_open);
-            fab_memo_.startAnimation(fab_open);
+            fab_goal_.startAnimation(fab_open_up);
+            fab_memo_.startAnimation(fab_open_low);
             v_fab_cover.startAnimation(fade_in);
             fab_goal_.setClickable(true);
             fab_memo_.setClickable(true);

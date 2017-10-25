@@ -18,13 +18,17 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.czeng.tidyday.R;
+import com.czeng.tidyday.GoalRecycler.GoalAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
+
 public class add_goal_ extends AppCompatActivity {
+
+    GoalAdapter adapter;
 
     LinearLayout ll_repeatsection, ll_qbpsection, ll_otnotificationsection;
     TextView tv_monthly_date, tv_monthly_time;
@@ -311,6 +315,7 @@ public class add_goal_ extends AppCompatActivity {
     }
 
     public void SaveAndCloseGoal(View view) {
+        adapter.addGoalCard("Test", "This is a test");
         finish();
     }
 }

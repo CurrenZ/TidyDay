@@ -4,7 +4,9 @@ package com.czeng.tidyday.GoalDataObject;
 import java.util.ArrayList;
 
 public class GoalCardsCollection {
+
     public static ArrayList<GoalCard> getGoalCards(){
+
         ArrayList<GoalCard> goalCards = new ArrayList<>();
 
         GoalCard goal = new GoalCard("Work Out", "Today at 3:30 - 4:30 PM");
