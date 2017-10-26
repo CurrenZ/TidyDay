@@ -32,7 +32,7 @@ public class MemoAdapter extends RecyclerView.Adapter<MemoHolder>{
     public void onBindViewHolder(MemoHolder holder, int position) {
         holder.titletxt.setText(memoCards.get(position).getTitle());
         holder.subtitletxt.setText(memoCards.get(position).getSubtitle());
-        //holder.img.getImageResource(goalCards.get(position).getImg());
+        holder.imageView.setImageResource(memoCards.get(position).getType_image());
     }
 
     @Override

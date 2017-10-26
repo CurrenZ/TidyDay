@@ -108,7 +108,7 @@ public class add_goal_ extends AppCompatActivity {
         tv_monthly_time.setText(stimeString);
         tv_onetime_time.setText(stimeString);
         tv_weekly_time.setText(stimeString);
-        String mxx = "On every "+getweekrank(dayofweekinmonthf.format(date))+" "+dayofweekinmonthf.format(date);
+        String mxx = "On every "+getweekrank(dayofweekinmonthf.format(date))+" "+dayf.format(date);
         tv_monthly_xth_xday.setText(mxx);
         tv_annually_date.setText(ann_datef.format(date));
 

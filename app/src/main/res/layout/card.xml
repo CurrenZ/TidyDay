@@ -25,7 +25,6 @@
             android:padding="@dimen/card_padding">
             <ImageView
                 android:id="@+id/card_image"
-                android:background="@drawable/tidy_day"
                 android:layout_width="@dimen/card_image_size"
                 android:layout_height="@dimen/card_image_size" />
         </LinearLayout>
