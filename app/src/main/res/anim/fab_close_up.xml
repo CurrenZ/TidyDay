@@ -7,13 +7,13 @@
     android:toYScale="0.0"
     android:pivotX="50%"
     android:pivotY="70%"
-    android:duration="50"
+    android:duration="1"
 
     android:interpolator="@android:anim/linear_interpolator"/>
 
 <alpha
     android:fromAlpha="1.0"
     android:toAlpha="0.0"
-    android:duration="50"
+    android:duration="1"
     android:interpolator="@android:anim/accelerate_interpolator"/>
 </set>

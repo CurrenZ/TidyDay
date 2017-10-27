@@ -15,20 +15,18 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.czeng.tidyday.R;
 import com.czeng.tidyday.GoalRecycler.GoalAdapter;
+import com.czeng.tidyday.GoalDataObject.GoalCard;
+import com.czeng.tidyday.GoalDataObject.GoalCardsCollection;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Objects;
 
 
 public class add_goal_ extends AppCompatActivity {
-
-    GoalAdapter adapter;
 
     LinearLayout ll_repeatsection, ll_qbpsection, ll_otnotificationsection;
     TextView tv_monthly_date, tv_monthly_time;
@@ -72,6 +70,9 @@ public class add_goal_ extends AppCompatActivity {
         }
     };
 
+    GoalAdapter adapter;
+    ArrayList<GoalCard> goalCards;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,9 @@ public class add_goal_ extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        goalCards = GoalCardsCollection.getGoalCards();
+        adapter = new GoalAdapter(this, goalCards);
 
         ll_repeatsection = (LinearLayout) findViewById(R.id.repeat_section);
         ll_qbpsection = (LinearLayout) findViewById(R.id.quit_bad_priority_section);
@@ -315,7 +319,7 @@ public class add_goal_ extends AppCompatActivity {
     }
 
     public void SaveAndCloseGoal(View view) {
-        adapter.addGoalCard("Test", "This is a test");
+        adapter.addGoalCard();
         finish();
     }
 }

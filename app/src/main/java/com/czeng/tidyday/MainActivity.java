@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean fab_add_isOpen = false;
     private FloatingActionButton fab_add_, fab_goal_, fab_memo_;
-    private Animation fab_open_up, fab_close_up, fab_open_low, fab_close_low, rotate_fwd, rotate_bwd, fade_in, fade_out;
+    private Animation fab_open_up, fab_close_up, fab_open_low, fab_close_low, rotate_fwd, rotate_bwd, rotate_bwd_fast, fade_in, fade_out;
     private View v_fab_cover;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         fab_close_low = AnimationUtils.loadAnimation(this,R.anim.fab_close_low);
         rotate_fwd = AnimationUtils.loadAnimation(this,R.anim.rotate_fwd);
         rotate_bwd = AnimationUtils.loadAnimation(this, R.anim.rotate_bwd);
+        rotate_bwd_fast = AnimationUtils.loadAnimation(this, R.anim.rotate_bwd_fast);
         fade_in = AnimationUtils.loadAnimation(this, R.anim.fadein);
         fade_out = AnimationUtils.loadAnimation(this,R.anim.fadeout);
         v_fab_cover = (View) findViewById(R.id.fabCover);
@@ -69,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent_add_goal = new Intent(MainActivity.this, add_goal_.class);
-                animate_close_tabs();
                 startActivity(intent_add_goal);
+                animate_close_tabs(true);
 
             }
         });
@@ -78,15 +79,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent_add_memo = new Intent(MainActivity.this, add_memo_.class);
-                animate_close_tabs();
                 startActivity(intent_add_memo);
+                animate_close_tabs(true);
 
             }
         });
         v_fab_cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                animate_close_tabs();
+                animate_close_tabs(false);
             }
         });
 
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onTabSelected(TabLayout.Tab tab) {
                         super.onTabSelected(tab);
-                        animate_close_tabs();
+                        animate_close_tabs(false);
                         setTabsIc(tab.getPosition());
                     }
                 }
@@ -110,9 +111,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void animate_close_tabs(){
+    private void animate_close_tabs(boolean add_activity_is_clicked){
         if (fab_add_isOpen){
-            fab_add_.startAnimation(rotate_bwd);
+            if (add_activity_is_clicked){
+                fab_add_.startAnimation(rotate_bwd_fast);
+            }
+            else {
+                fab_add_.startAnimation(rotate_bwd);
+            }
             fab_goal_.startAnimation(fab_close_up);
             fab_memo_.startAnimation(fab_close_low);
             v_fab_cover.startAnimation(fade_out);
@@ -126,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void animateFab(){
         if(fab_add_isOpen){
-            animate_close_tabs();
+            animate_close_tabs(false);
         }
         else{
             fab_add_.startAnimation(rotate_fwd);
