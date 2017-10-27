@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.czeng.tidyday.GoalDataObject.GaolDatabaseHelper;
 import com.czeng.tidyday.GoalDataObject.GoalCard;
 import com.czeng.tidyday.GoalDataObject.GoalCardsCollection;
 import com.czeng.tidyday.GoalRecycler.GoalAdapter;
@@ -22,6 +23,8 @@ public class goal_class extends Fragment{
     RecyclerView rv;
     GoalAdapter adapter;
     ArrayList<GoalCard> goalCards;
+
+    private static GaolDatabaseHelper mDatabaseHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

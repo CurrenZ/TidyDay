@@ -15,7 +15,9 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.czeng.tidyday.GoalDataObject.GaolDatabaseHelper;
 import com.czeng.tidyday.R;
 import com.czeng.tidyday.GoalRecycler.GoalAdapter;
 import com.czeng.tidyday.GoalDataObject.GoalCard;
@@ -27,6 +29,8 @@ import java.util.Calendar;
 
 
 public class add_goal_ extends AppCompatActivity {
+
+    GaolDatabaseHelper mDatabaseHelper;
 
     LinearLayout ll_repeatsection, ll_qbpsection, ll_otnotificationsection;
     TextView tv_monthly_date, tv_monthly_time;
@@ -82,6 +86,8 @@ public class add_goal_ extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+        mDatabaseHelper = new GaolDatabaseHelper(this);
 
         goalCards = GoalCardsCollection.getGoalCards();
         adapter = new GoalAdapter(this, goalCards);
@@ -314,12 +320,26 @@ public class add_goal_ extends AppCompatActivity {
         }
     }
 
+    public void AddGoalData(String title, String subtitle, String type){
+        boolean insertData = mDatabaseHelper.addGoalData(title, subtitle, type);
+
+        if (insertData) {
+            toastMessage("Data Successfully Inserted!");
+        } else {
+            toastMessage("Something went wrong");
+        }
+    }
+
     public void Close(View view) {
         finish();
     }
 
     public void SaveAndCloseGoal(View view) {
-        adapter.addGoalCard();
+        AddGoalData("Test", "This is a test", "GG");
         finish();
+    }
+
+    private void toastMessage(String message){
+        Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
     }
 }

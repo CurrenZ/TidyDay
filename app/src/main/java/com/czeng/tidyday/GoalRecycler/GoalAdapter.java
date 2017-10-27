@@ -53,7 +53,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
 
     // ADD
     public void addGoalCard(){
-        goalCards.add(new GoalCard("Test", "This is a test") );
+        //goalCards.add(new GoalCard("Test", "This is a test") );
         this.notifyItemInserted(0);
     }
 }
