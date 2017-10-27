@@ -32,7 +32,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
     public void onBindViewHolder(GoalHolder holder, int position) {
         holder.titletxt.setText(goalCards.get(position).getTitle());
         holder.subtitletxt.setText(goalCards.get(position).getSubtitle());
-        //holder.img.getImageResource(goalCards.get(position).getImg());
+        holder.imageView.setImageResource(goalCards.get(position).getType_image());
     }
 
     @Override
