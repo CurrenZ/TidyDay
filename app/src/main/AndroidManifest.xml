@@ -20,11 +20,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".add_goal_memo.add_goal_"
+            android:name=".add_entry.add_goal_"
             android:label="@string/title_activity_add_goal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".add_goal_memo.add_memo_"
+            android:name=".add_entry.add_memo_"
             android:label="@string/title_activity_add_memo"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

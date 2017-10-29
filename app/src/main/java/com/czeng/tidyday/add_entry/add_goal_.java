@@ -1,7 +1,10 @@
-package com.czeng.tidyday.add_goal_memo;
+package com.czeng.tidyday.add_entry;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,16 +20,24 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.czeng.tidyday.Database.GoalContract;
+import com.czeng.tidyday.Database.GoalDatabaseHelper;
+import com.czeng.tidyday.MainActivity;
 import com.czeng.tidyday.R;
-import com.czeng.tidyday.GoalRecycler.GoalAdapter;
-import com.czeng.tidyday.GoalDataObject.GoalCard;
+import com.czeng.tidyday.Cards.GoalCard;
+import com.czeng.tidyday.tabs.goal_class;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 
-public class add_goal_ extends AppCompatActivity {
+public class add_goal_ extends AppCompatActivity{
+
+    private final AppCompatActivity activity = add_goal_.this;
+
+    private GoalDatabaseHelper databaseHelper;
+    private GoalCard goalCard;
 
     LinearLayout ll_repeatsection, ll_qbpsection, ll_otnotificationsection;
     TextView tv_monthly_date, tv_monthly_time;
@@ -70,10 +81,6 @@ public class add_goal_ extends AppCompatActivity {
         }
     };
 
-    GoalAdapter adapter;
-    ArrayList<GoalCard> goalCards;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -83,8 +90,8 @@ public class add_goal_ extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        //goalCards = new GoalCardsCollection.getGoalCards();
-        adapter = new GoalAdapter(this, goalCards);
+        goalCard = new GoalCard();
+        databaseHelper = new GoalDatabaseHelper(activity);
 
         ll_repeatsection = (LinearLayout) findViewById(R.id.repeat_section);
         ll_qbpsection = (LinearLayout) findViewById(R.id.quit_bad_priority_section);
@@ -314,14 +321,15 @@ public class add_goal_ extends AppCompatActivity {
         }
     }
 
-    public void AddGoalData(String title, String subtitle, String type){
-//        boolean insertData = mDatabaseHelper.addGoalData(title, subtitle, type);
-//
-//        if (insertData) {
-//            toastMessage("Data Successfully Inserted!");
-//        } else {
-//            toastMessage("Something went wrong");
-//        }
+    public void postDatatoSQLite(){
+        goalCard.setId(1);
+        goalCard.setTitle("Test");
+        goalCard.setSubtitle("This is a test");
+        goalCard.setType("GG");
+
+        databaseHelper.addGoalCard(goalCard);
+
+        toastMessage("Your Goal Is Added Successfully!");
     }
 
     private void toastMessage(String message){
@@ -333,7 +341,8 @@ public class add_goal_ extends AppCompatActivity {
     }
 
     public void SaveAndCloseGoal(View view) {
-        AddGoalData("Test", "This is a test", "GG");
-        finish();
+        postDatatoSQLite();
+        Intent tab_intent = new Intent(activity, MainActivity.class);
+        startActivity(tab_intent);
     }
 }

@@ -15,8 +15,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import com.czeng.tidyday.add_goal_memo.add_goal_;
-import com.czeng.tidyday.add_goal_memo.add_memo_;
+import com.czeng.tidyday.add_entry.add_goal_;
+import com.czeng.tidyday.add_entry.add_memo_;
 import com.czeng.tidyday.tabs.goal_class;
 import com.czeng.tidyday.tabs.memo_class;
 

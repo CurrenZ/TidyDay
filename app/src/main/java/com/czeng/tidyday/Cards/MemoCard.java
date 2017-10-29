@@ -1,4 +1,4 @@
-package com.czeng.tidyday.MemoDataObject;
+package com.czeng.tidyday.Cards;
 
 
 import com.czeng.tidyday.R;

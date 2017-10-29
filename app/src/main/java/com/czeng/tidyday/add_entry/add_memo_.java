@@ -1,4 +1,4 @@
-package com.czeng.tidyday.add_goal_memo;
+package com.czeng.tidyday.add_entry;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
@@ -13,10 +13,8 @@ import android.widget.TextView;
 
 import com.czeng.tidyday.R;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class add_memo_ extends AppCompatActivity {
 
