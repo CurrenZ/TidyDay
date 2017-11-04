@@ -7,7 +7,7 @@
     <dimen name="card_margin_top">8dp</dimen>
     <dimen name="card_margin_bottom">4dp</dimen>
     <dimen name="card_margin_side">8dp</dimen>
-    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_padding">8dp</dimen>
     <dimen name="card_elevation">4dp</dimen>
     <dimen name="card_radius">4dp</dimen>
     <dimen name="card_image_size">55dp</dimen>

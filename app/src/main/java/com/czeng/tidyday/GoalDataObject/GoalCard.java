@@ -6,13 +6,24 @@ import com.czeng.tidyday.R;
 public class GoalCard {
     private String title;
     private String subtitle;
-    private int type_image;
+    private String type;
+    private int id;
+
+    public GoalCard(int id, String title, String subtitle, String type) {
+        this.title = title;
+        this.subtitle = subtitle;
+        this.type = type;
+        this.id = id;
+    }
 
     public GoalCard(String title, String subtitle, String type) {
         this.title = title;
         this.subtitle = subtitle;
-        setCardImage(type);
+        this.type = type;
+    }
 
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -23,23 +34,23 @@ public class GoalCard {
         return subtitle;
     }
 
-    public int getType_image() {
-        return type_image;
+    public String getType() {
+        return type;
     }
 
-    private void setCardImage(String type){
-        switch (type){
-            case "GG":
-                this.type_image = R.drawable.ic_thumb_up;
-                break;
-            case "QB":
-                this.type_image = R.drawable.ic_pan;
-                break;
-            case "OR":
-                this.type_image = R.drawable.ic_event_available;
-                break;
-            default:
-                this.type_image = R.drawable.tidy_day;
-        }
+    public int getId() {
+        return id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

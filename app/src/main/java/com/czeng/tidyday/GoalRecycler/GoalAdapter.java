@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.czeng.tidyday.GoalDataBase.GoalDataSource;
 import com.czeng.tidyday.GoalDataObject.GoalCard;
 import com.czeng.tidyday.R;
 
@@ -32,7 +33,20 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
     public void onBindViewHolder(GoalHolder holder, int position) {
         holder.titletxt.setText(goalCards.get(position).getTitle());
         holder.subtitletxt.setText(goalCards.get(position).getSubtitle());
-        holder.imageView.setImageResource(goalCards.get(position).getType_image());
+        switch (goalCards.get(position).getType()){
+            case "GG":
+                holder.imageView.setImageResource(R.drawable.ic_thumb_up);
+                break;
+            case "QB":
+                holder.imageView.setImageResource(R.drawable.ic_pan);
+                break;
+            case "OR":
+                holder.imageView.setImageResource(R.drawable.ic_event_available);
+                break;
+            default:
+                holder.imageView.setImageResource(R.drawable.tidy_day);
+        }
+
     }
 
     @Override
@@ -42,18 +56,29 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
 
     // DISMISS
      public void dismissGoalCard(int pos){
+         String delete_title = goalCards.get(pos).getTitle();
+         GoalDataSource dataSource = new GoalDataSource(c);
+         dataSource.open();
+         dataSource.deleteGoal(delete_title);
+         dataSource.close();
          goalCards.remove(pos);
          this.notifyItemRemoved(pos);
      }
 
+    public void dismissGoalCardByID(int pos){
+        int delete_id = goalCards.get(pos).getId();
+        GoalDataSource dataSource = new GoalDataSource(c);
+        dataSource.open();
+        if (dataSource.deleteGoalByID(delete_id)){
+            goalCards.remove(pos);
+            this.notifyItemRemoved(pos);
+        }
+        dataSource.close();
+
+    }
+
      // MOVE
     public void moveGoalCard(int oldpos, int newpos){
         this.notifyItemMoved(oldpos, newpos);
-    }
-
-    // ADD
-    public void addGoalCard(){
-        //goalCards.add(new GoalCard("Test", "This is a test") );
-        this.notifyItemInserted(0);
     }
 }
