@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -45,7 +43,7 @@ public class add_goal_ extends AppCompatActivity {
     GoalDataSource dataSource = new GoalDataSource(this);
 
     // Strings that will be stored in db
-    String GoalTitle = "", GoalType = "GG", GoalRepeat = "D", GoalDToggle = "", GoalWToggle = "", GoalMToggle = "", GoalCalenderCache = "";
+    String GoalTitle = "", GoalType = "GG", GoalRepeat = "", GoalDToggle = "", GoalWToggle = "", GoalMMode = "", GoalCalenderCache = "";
     int GoalID = 0;
 
     LinearLayout ll_repeatsection, ll_qbpsection, ll_otnotificationsection;
@@ -59,7 +57,7 @@ public class add_goal_ extends AppCompatActivity {
     ToggleButton tb_mon, tb_tue, tb_wed, tb_thu, tb_fri, tb_sat, tb_sun;
     ToggleButton tb_mo, tb_no, tb_ni;
 
-    SimpleDateFormat sqldate = new SimpleDateFormat("MMMM dddd yyyy kk 00 aa");
+    SimpleDateFormat sqldate = new SimpleDateFormat("MMMM dddd yyyy KK 00 aa");
     SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM dd, yyyy");
     SimpleDateFormat stf = new SimpleDateFormat("KK:mm aa");
     SimpleDateFormat sstf = new SimpleDateFormat("KK:"+"00"+" aa");
@@ -100,7 +98,7 @@ public class add_goal_ extends AppCompatActivity {
         }
     };
 
-    GoalAdapter adapter;
+    GoalAdapter goalAdapter;
     ArrayList<GoalCard> goalCards;
 
 
@@ -114,12 +112,12 @@ public class add_goal_ extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         //goalCards = new GoalCardsCollection.getGoalCards();
-        adapter = new GoalAdapter(this, goalCards);
+        goalAdapter = new GoalAdapter(this, goalCards);
 
-        //
+        // get max id and pass new id
         GoalID = getMaxID() + 1;
 
-        toastMessage(String.valueOf(GoalID));
+//        toastMessage(String.valueOf(GoalID));
 
         ll_repeatsection = (LinearLayout) findViewById(R.id.repeat_section);
         ll_qbpsection = (LinearLayout) findViewById(R.id.quit_bad_priority_section);
@@ -151,6 +149,7 @@ public class add_goal_ extends AppCompatActivity {
         tb_sun = (ToggleButton) findViewById(R.id.tb_Sun);
 
         long date = System.currentTimeMillis();
+        GoalCalenderCache = sqldate.format(date);
         String dateString = sdf.format(date);
         String stimeString = sstf.format(date);
         tv_monthly_date.setText(dateString);
@@ -382,6 +381,120 @@ public class add_goal_ extends AppCompatActivity {
         new TimePickerDialog(this, t, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), false).show();
     }
 
+    public void MorningToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalDToggle += "mo";
+        }
+        else{
+            GoalDToggle = GoalDToggle.replaceAll("mo", "");
+        }
+    }
+
+    public void NoonToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalDToggle += "no";
+        }
+        else{
+            GoalDToggle = GoalDToggle.replaceAll("no", "");
+        }
+    }
+
+    public void NightToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalDToggle += "ni";
+        }
+        else{
+            GoalDToggle = GoalDToggle.replaceAll("ni", "");
+        }
+    }
+
+    public void SunToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalWToggle += "sun";
+        }
+        else{
+            GoalWToggle = GoalWToggle.replaceAll("sun", "");
+        }
+    }
+
+    public void MonToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalWToggle += "mon";
+        }
+        else{
+            GoalWToggle = GoalWToggle.replaceAll("mon", "");
+        }
+    }
+
+    public void TueToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalWToggle += "tue";
+        }
+        else{
+            GoalWToggle = GoalWToggle.replaceAll("tue", "");
+        }
+    }
+
+    public void WedToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalWToggle += "wed";
+        }
+        else{
+            GoalWToggle = GoalWToggle.replaceAll("wed", "");
+        }
+    }
+
+    public void ThuToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalWToggle += "thu";
+        }
+        else{
+            GoalWToggle = GoalWToggle.replaceAll("thu", "");
+        }
+    }
+
+    public void FriToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalWToggle += "fri";
+        }
+        else{
+            GoalWToggle = GoalWToggle.replaceAll("fir", "");
+        }
+    }
+
+    public void SatToggled(View view) {
+        boolean checked = ((ToggleButton)view).isChecked();
+        if (checked){
+            GoalWToggle += "sat";
+        }
+        else{
+            GoalWToggle = GoalWToggle.replaceAll("sat", "");
+        }
+    }
+
+    public void MonthModeSelected(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()) {
+            case R.id.rb_monthly_sameday:
+                if (checked)
+                    GoalMMode = "sd";
+                break;
+            case R.id.rb_monthly_xth_xday:
+                if (checked)
+                    GoalMMode = "xx";
+                break;
+        }
+    }
+
     private int getMaxID(){
         int maxid = 0;
         SQLiteDatabase database;
@@ -401,7 +514,7 @@ public class add_goal_ extends AppCompatActivity {
         dataSource.open();
         dataSource.insertGoal(id, title, subtitle, type);
         dataSource.close();
-        adapter.notifyItemInserted(0);
+        goalAdapter.notifyItemInserted(0);
 
     }
 
@@ -413,7 +526,6 @@ public class add_goal_ extends AppCompatActivity {
         finish();
     }
 
-    @SuppressLint("StaticFieldLeak")
     public void SaveAndCloseGoal(View view) {
 
         GoalTitle = et_title.getText().toString();
@@ -424,8 +536,8 @@ public class add_goal_ extends AppCompatActivity {
             AddGoalData(GoalID, GoalTitle, "This is a test", GoalType);
             Intent Back_Main = new Intent(add_goal_.this, MainActivity.class);
             startActivity(Back_Main);
+//            toastMessage(GoalCalenderCache);
         }
 
     }
-
 }

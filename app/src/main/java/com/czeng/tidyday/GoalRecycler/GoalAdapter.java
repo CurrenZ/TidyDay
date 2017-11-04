@@ -54,16 +54,6 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
         return goalCards.size();
     }
 
-    // DISMISS
-     public void dismissGoalCard(int pos){
-         String delete_title = goalCards.get(pos).getTitle();
-         GoalDataSource dataSource = new GoalDataSource(c);
-         dataSource.open();
-         dataSource.deleteGoal(delete_title);
-         dataSource.close();
-         goalCards.remove(pos);
-         this.notifyItemRemoved(pos);
-     }
 
     public void dismissGoalCardByID(int pos){
         int delete_id = goalCards.get(pos).getId();

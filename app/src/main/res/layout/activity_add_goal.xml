@@ -181,6 +181,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="MorningToggled"
                         android:textOff="@string/morning"
                         android:textOn="@string/morning" />
 
@@ -189,6 +190,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="NoonToggled"
                         android:textOff="@string/noon"
                         android:textOn="@string/noon" />
 
@@ -197,6 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:onClick="NightToggled"
                         android:textOff="@string/night"
                         android:textOn="@string/night" />
                 </LinearLayout>
@@ -219,6 +222,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:onClick="SunToggled"
                             android:textOff="@string/s"
                             android:textOn="@string/s" />
 
@@ -227,6 +231,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:onClick="MonToggled"
                             android:textOff="@string/m"
                             android:textOn="@string/m" />
 
@@ -236,6 +241,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textOff="@string/t"
+                            android:onClick="TueToggled"
                             android:textOn="@string/t" />
 
                         <ToggleButton
@@ -243,6 +249,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:onClick="WedToggled"
                             android:textOff="@string/w"
                             android:textOn="@string/w" />
 
@@ -252,6 +259,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:textOff="@string/t"
+                            android:onClick="ThuToggled"
                             android:textOn="@string/t" />
 
                         <ToggleButton
@@ -259,6 +267,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:onClick="FriToggled"
                             android:textOff="@string/f"
                             android:textOn="@string/f" />
 
@@ -267,6 +276,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:onClick="SatToggled"
                             android:textOff="@string/s"
                             android:textOn="@string/s" />
                     </LinearLayout>
@@ -354,6 +364,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:checked="true"
+                            android:onClick="MonthModeSelected"
                             android:text="@string/on_the_same_day_each_month" />
 
                         <RadioButton
@@ -361,6 +372,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:onClick="MonthModeSelected"
                             android:text="@string/on_every_forth_sunday" />
 
                     </RadioGroup>

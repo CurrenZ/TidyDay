@@ -15,7 +15,12 @@ public class GoalDatabaseHelper extends SQLiteOpenHelper{
             GoalContract.GoalEntry._ID + " INTEGER PRIMARY KEY," +
             GoalContract.GoalEntry.COL_TITLE + " TEXT, " +
             GoalContract.GoalEntry.COL_SUBTITLE + " TEXT, " +
-            GoalContract.GoalEntry.COL_TYPE + " TEXT " +
+            GoalContract.GoalEntry.COL_TYPE + " TEXT, " +
+            GoalContract.GoalEntry.COL_REPEAT + " TEXT, " +
+            GoalContract.GoalEntry.COL_DAYTOGGLE + " TEXT, " +
+            GoalContract.GoalEntry.COL_WEEkTOGGLE + " TEXT, " +
+            GoalContract.GoalEntry.COL_MONTHTMODE + " TEXT, " +
+            GoalContract.GoalEntry.COL_CAL + " TEXT " +
             "); ";
 
     public static final String DELETE_TABLES = "DROP TABLE IF EXISTS " + GoalContract.GoalEntry.TABLE_NAME + ";";

@@ -9,5 +9,10 @@ public class GoalContract {
         public static final String COL_TITLE = "title";
         public static final String COL_SUBTITLE = "subtitle";
         public static final String COL_TYPE = "type";
+        public static final String COL_REPEAT = "repeat";
+        public static final String COL_DAYTOGGLE = "dayToggle";
+        public static final String COL_WEEkTOGGLE = "weekToggle";
+        public static final String COL_MONTHTMODE = "monthMode";
+        public static final String COL_CAL = "calenderCache";
     }
 }
