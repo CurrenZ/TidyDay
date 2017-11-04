@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://C:\Users\curre\AndroidStudioProjects\TidyDay_new\TidyDay.iml" filepath="C:\Users\curre\AndroidStudioProjects\TidyDay_new\TidyDay.iml" />
+=======
+      <module fileurl="file://C:\Users\Current\Documents\GitHub\TidyDay_new\TidyDay.iml" filepath="C:\Users\Current\Documents\GitHub\TidyDay_new\TidyDay.iml" />
+>>>>>>> 6829530cf558bd419000e1016b2d1a4d8f7e5794
       <module fileurl="file://$PROJECT_DIR$/TidyDay_new.iml" filepath="$PROJECT_DIR$/TidyDay_new.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Current\Documents\GitHub\TidyDay_new\app\app.iml" filepath="C:\Users\Current\Documents\GitHub\TidyDay_new\app\app.iml" />
     </modules>
   </component>
 </project>
