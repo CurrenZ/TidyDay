@@ -1,8 +1,10 @@
 package com.czeng.tidyday.add_goal_memo;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -515,7 +517,13 @@ public class add_goal_ extends AppCompatActivity {
         dataSource.insertGoal(id, title, subtitle, type);
         dataSource.close();
         goalAdapter.notifyItemInserted(0);
+    }
 
+    public void AddGoalData(int id, String title, String subtitle, String type, String repeat, String dtoggle, String wtoggle, String mmode, String cal){
+        dataSource.open();
+        dataSource.insertGoal(id, title, subtitle, type, repeat, dtoggle, wtoggle, mmode, cal);
+        dataSource.close();
+        goalAdapter.notifyItemInserted(0);
     }
 
     private void toastMessage(String message){
@@ -523,7 +531,28 @@ public class add_goal_ extends AppCompatActivity {
     }
 
     public void Close(View view) {
-        finish();
+        AlertDialog.Builder exit_alert_builder = new AlertDialog.Builder(this);
+        exit_alert_builder.setMessage("Are you sure you wan to discard this goal?")
+                .setCancelable(false)
+                .setPositiveButton("Discard", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("Keep Editing", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = exit_alert_builder.create();
+
+        GoalTitle = et_title.getText().toString();
+        if (GoalTitle == null || Objects.equals(GoalTitle, "")){
+            finish();
+        }
+        else{alert.show();}
     }
 
     public void SaveAndCloseGoal(View view) {
@@ -533,10 +562,10 @@ public class add_goal_ extends AppCompatActivity {
             toastMessage("Please Enter the Title of Your Goal!");
         }
         else{
-            AddGoalData(GoalID, GoalTitle, "This is a test", GoalType);
+//            AddGoalData(GoalID, GoalTitle, "This is a test", GoalType);
+            AddGoalData(GoalID, GoalTitle, "This should be something else", GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache);
             Intent Back_Main = new Intent(add_goal_.this, MainActivity.class);
             startActivity(Back_Main);
-//            toastMessage(GoalCalenderCache);
         }
 
     }
