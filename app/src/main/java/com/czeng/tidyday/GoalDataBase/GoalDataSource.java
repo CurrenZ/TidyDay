@@ -23,7 +23,6 @@ public class GoalDataSource {
     public static final String [] GoalCol = {
             GoalContract.GoalEntry._ID,
             GoalContract.GoalEntry.COL_TITLE,
-            GoalContract.GoalEntry.COL_SUBTITLE,
             GoalContract.GoalEntry.COL_TYPE,
             GoalContract.GoalEntry.COL_REPEAT,
             GoalContract.GoalEntry.COL_DAYTOGGLE,
@@ -72,14 +71,13 @@ public class GoalDataSource {
         while (cursor.moveToNext()){
             int id = cursor.getInt(cursor.getColumnIndex(GoalContract.GoalEntry._ID));
             String title = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_TITLE));
-            String subtitle = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_SUBTITLE));
             String type = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_TYPE));
             String repeat = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_REPEAT));
             String daytoggle = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_DAYTOGGLE));
             String weektoggle = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_WEEkTOGGLE));
             String monthmode = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_MONTHTMODE));
             String cal = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_CAL));
-            goalCard = new GoalCard(id, title, subtitle, type, repeat, daytoggle, weektoggle, monthmode, cal);
+            goalCard = new GoalCard(id, title, type, repeat, daytoggle, weektoggle, monthmode, cal);
             list_goalCards.add(goalCard);
         }
         return list_goalCards;
@@ -96,28 +94,26 @@ public class GoalDataSource {
 //        Log.i(GoalDatabaseHelper.DATABASE_NAME, "added name id:" + insertGoal);
 //    }
 
-    public void insertGoal (int id, String title, String subtitle, String type){
+    public void insertGoal (int id, String title, String type){
         ContentValues values = new ContentValues();
         values.put(GoalContract.GoalEntry._ID, id);
         values.put(GoalContract.GoalEntry.COL_TITLE, title);
-        values.put(GoalContract.GoalEntry.COL_SUBTITLE, subtitle);
         values.put(GoalContract.GoalEntry.COL_TYPE, type);
 
         long insertGoal = database.insert(GoalContract.GoalEntry.TABLE_NAME, null, values);
         Log.i(GoalDatabaseHelper.DATABASE_NAME, "added name id:" + insertGoal);
     }
 
-    public void insertGoal (int id, String title, String subtitle, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String cal){
+    public void insertGoal (int id, String title, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String cal){
         ContentValues values = new ContentValues();
         values.put(GoalContract.GoalEntry._ID, id);
         values.put(GoalContract.GoalEntry.COL_TITLE, title);
-        values.put(GoalContract.GoalEntry.COL_SUBTITLE, subtitle);
         values.put(GoalContract.GoalEntry.COL_TYPE, type);
-        values.put(GoalContract.GoalEntry.COL_REPEAT, type);
-        values.put(GoalContract.GoalEntry.COL_DAYTOGGLE, type);
-        values.put(GoalContract.GoalEntry.COL_WEEkTOGGLE, type);
-        values.put(GoalContract.GoalEntry.COL_MONTHTMODE, type);
-        values.put(GoalContract.GoalEntry.COL_CAL, type);
+        values.put(GoalContract.GoalEntry.COL_REPEAT, repeat);
+        values.put(GoalContract.GoalEntry.COL_DAYTOGGLE, daytoggle);
+        values.put(GoalContract.GoalEntry.COL_WEEkTOGGLE, weektoggle);
+        values.put(GoalContract.GoalEntry.COL_MONTHTMODE, monthmode);
+        values.put(GoalContract.GoalEntry.COL_CAL, cal);
 
         long insertGoal = database.insert(GoalContract.GoalEntry.TABLE_NAME, null, values);
         Log.i(GoalDatabaseHelper.DATABASE_NAME, "added name id:" + insertGoal);

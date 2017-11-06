@@ -6,7 +6,6 @@ import com.czeng.tidyday.R;
 public class GoalCard {
     private int id;
     private String title;
-    private String subtitle;
     private String type;
     private String repeat;
     private String daytoggle;
@@ -14,10 +13,9 @@ public class GoalCard {
     private String monthmode;
     private String calcache;
 
-    public GoalCard(int id, String title, String subtitle, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String calcache) {
+    public GoalCard(int id, String title, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String calcache) {
         this.id = id;
         this.title = title;
-        this.subtitle = subtitle;
         this.type = type;
         this.repeat = repeat;
         this.daytoggle = daytoggle;
@@ -26,16 +24,14 @@ public class GoalCard {
         this.calcache = calcache;
     }
 
-    public GoalCard(int id, String title, String subtitle, String type) {
+    public GoalCard(int id, String title, String type) {
         this.title = title;
-        this.subtitle = subtitle;
         this.type = type;
         this.id = id;
     }
 
-    public GoalCard(String title, String subtitle, String type) {
+    public GoalCard(String title, String type) {
         this.title = title;
-        this.subtitle = subtitle;
         this.type = type;
     }
 
@@ -64,10 +60,6 @@ public class GoalCard {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getSubtitle() {
-        return subtitle;
     }
 
     public String getType() {
@@ -101,10 +93,6 @@ public class GoalCard {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
     }
 
     public void setType(String type) {

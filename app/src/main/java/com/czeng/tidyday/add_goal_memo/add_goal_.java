@@ -45,7 +45,7 @@ public class add_goal_ extends AppCompatActivity {
     GoalDataSource dataSource = new GoalDataSource(this);
 
     // Strings that will be stored in db
-    String GoalTitle = "", GoalType = "GG", GoalRepeat = "", GoalDToggle = "", GoalWToggle = "", GoalMMode = "", GoalCalenderCache = "";
+    String GoalTitle = "", GoalType = "GG", GoalRepeat = "", GoalDToggle = "", GoalWToggle = "", GoalMMode = "sd", GoalCalenderCache = "";
     int GoalID = 0;
 
     LinearLayout ll_repeatsection, ll_qbpsection, ll_otnotificationsection;
@@ -512,16 +512,16 @@ public class add_goal_ extends AppCompatActivity {
         return maxid;
     }
 
-    public void AddGoalData(int id, String title, String subtitle, String type){
+    public void AddGoalData(int id, String title, String type){
         dataSource.open();
-        dataSource.insertGoal(id, title, subtitle, type);
+        dataSource.insertGoal(id, title, type);
         dataSource.close();
         goalAdapter.notifyItemInserted(0);
     }
 
-    public void AddGoalData(int id, String title, String subtitle, String type, String repeat, String dtoggle, String wtoggle, String mmode, String cal){
+    public void AddGoalData(int id, String title, String type, String repeat, String dtoggle, String wtoggle, String mmode, String cal){
         dataSource.open();
-        dataSource.insertGoal(id, title, subtitle, type, repeat, dtoggle, wtoggle, mmode, cal);
+        dataSource.insertGoal(id, title, type, repeat, dtoggle, wtoggle, mmode, cal);
         dataSource.close();
         goalAdapter.notifyItemInserted(0);
     }
@@ -561,9 +561,15 @@ public class add_goal_ extends AppCompatActivity {
         if (GoalTitle == null || Objects.equals(GoalTitle, "")){
             toastMessage("Please Enter the Title of Your Goal!");
         }
+        else if (Objects.equals(GoalRepeat, "D") && (GoalDToggle == null || Objects.equals(GoalDToggle, ""))){
+            toastMessage("Please Toggle the Repeat Period!");
+        }
+        else if (Objects.equals(GoalRepeat, "W") && (GoalWToggle == null || Objects.equals(GoalWToggle, ""))){
+            toastMessage("Please Toggle the Repeat Period!");
+        }
         else{
 //            AddGoalData(GoalID, GoalTitle, "This is a test", GoalType);
-            AddGoalData(GoalID, GoalTitle, "This should be something else", GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache);
+            AddGoalData(GoalID, GoalTitle, GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache);
             Intent Back_Main = new Intent(add_goal_.this, MainActivity.class);
             startActivity(Back_Main);
         }

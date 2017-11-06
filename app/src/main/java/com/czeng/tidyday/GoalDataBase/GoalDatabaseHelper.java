@@ -14,7 +14,6 @@ public class GoalDatabaseHelper extends SQLiteOpenHelper{
     public static final String CREATE_TABLE = "CREATE TABLE " + GoalContract.GoalEntry.TABLE_NAME + " (" +
             GoalContract.GoalEntry._ID + " INTEGER PRIMARY KEY," +
             GoalContract.GoalEntry.COL_TITLE + " TEXT, " +
-            GoalContract.GoalEntry.COL_SUBTITLE + " TEXT, " +
             GoalContract.GoalEntry.COL_TYPE + " TEXT, " +
             GoalContract.GoalEntry.COL_REPEAT + " TEXT, " +
             GoalContract.GoalEntry.COL_DAYTOGGLE + " TEXT, " +
