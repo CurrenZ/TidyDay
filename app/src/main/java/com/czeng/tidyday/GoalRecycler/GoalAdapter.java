@@ -20,14 +20,15 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
     private Context c;
     private ArrayList<GoalCard> goalCards;
 
+    private SimpleDateFormat sqldate = new SimpleDateFormat("MMMM d yyyy hh 00 aa");
+
     private SimpleDateFormat time_in_24 = new SimpleDateFormat("kk");
     private SimpleDateFormat day_number = new SimpleDateFormat("u");
     private SimpleDateFormat week_number = new SimpleDateFormat("W");
     private SimpleDateFormat month_number = new SimpleDateFormat("MM");
-    private SimpleDateFormat day_in_month = new SimpleDateFormat("dd");
-    private SimpleDateFormat sqldate = new SimpleDateFormat("MMMM dddd yyyy KK 00 aa");
-    private SimpleDateFormat std_t = new SimpleDateFormat("KK:mm aa");
-    private SimpleDateFormat std_day = new SimpleDateFormat("MMM dd");
+    private SimpleDateFormat day_in_month = new SimpleDateFormat("d");
+    private SimpleDateFormat std_day = new SimpleDateFormat("EEE, MMM d");
+    private SimpleDateFormat std_t = new SimpleDateFormat("h:mm aa");
 
     public GoalAdapter(Context c, ArrayList<GoalCard> goalCards) {
         this.c = c;
@@ -394,16 +395,27 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
                         }
                         break;
                     case "A":
-                        break;
-                    default:
+                        holder.subtitletxt.setText(std_day.format(cal.getTime().getTime()));
                         break;
                 }
                 holder.imageView.setImageResource(R.drawable.ic_thumb_up);
                 break;
             case "QB":
+                switch (goalCards.get(position).getRepeat()){
+                    case "U":
+                        holder.subtitletxt.setText("A fresh start!");
+                        break;
+                    case "I":
+                        holder.subtitletxt.setText("A fresh start!");
+                        break;
+                    case "N":
+                        holder.subtitletxt.setText("A fresh start!");
+                        break;
+                }
                 holder.imageView.setImageResource(R.drawable.ic_pan);
                 break;
             case "OR":
+                holder.subtitletxt.setText("Get prepared: " + std_day.format(cal.getTime().getTime()) + " at " + std_t.format(cal.getTime().getTime()));
                 holder.imageView.setImageResource(R.drawable.ic_event_available);
                 break;
             default:

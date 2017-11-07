@@ -59,13 +59,13 @@ public class add_goal_ extends AppCompatActivity {
     ToggleButton tb_mon, tb_tue, tb_wed, tb_thu, tb_fri, tb_sat, tb_sun;
     ToggleButton tb_mo, tb_no, tb_ni;
 
-    SimpleDateFormat sqldate = new SimpleDateFormat("MMMM dddd yyyy KK 00 aa");
-    SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM dd, yyyy");
-    SimpleDateFormat stf = new SimpleDateFormat("KK:mm aa");
-    SimpleDateFormat sstf = new SimpleDateFormat("KK:"+"00"+" aa");
+    SimpleDateFormat sqldate = new SimpleDateFormat("MMMM d yyyy hh mm aa");
+    SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d, yyyy");
+    SimpleDateFormat stf = new SimpleDateFormat("h:mm aa");
+    SimpleDateFormat sstf = new SimpleDateFormat("h:"+"00"+" aa");
     SimpleDateFormat dayofweekinmonthf = new SimpleDateFormat("F");;
     SimpleDateFormat dayf = new SimpleDateFormat("EEEE");
-    SimpleDateFormat ann_datef = new SimpleDateFormat("MMM dd, yyyy");
+    SimpleDateFormat ann_datef = new SimpleDateFormat("MMM d, yyyy");
 
     String m_o_a = "mon";
     String m_o_w = "mon";
@@ -339,6 +339,7 @@ public class add_goal_ extends AppCompatActivity {
             case R.id.radioButton2:
                 if (checked)
                     GoalType = "QB";
+                    GoalRepeat = "U";
                     ll_repeatsection.setVisibility(View.GONE);
                     ll_qbpsection.setVisibility(View.VISIBLE);
                     ll_otnotificationsection.setVisibility(View.GONE);
@@ -362,11 +363,11 @@ public class add_goal_ extends AppCompatActivity {
                 break;
             case R.id.quit_bad_priority_important:
                 if (checked)
-                    GoalType = "I";
+                    GoalRepeat = "I";
                 break;
             case R.id.quit_bad_priority_normal:
                 if (checked)
-                    GoalType = "N";
+                    GoalRepeat = "N";
                 break;
         }
     }
@@ -559,16 +560,22 @@ public class add_goal_ extends AppCompatActivity {
 
         GoalTitle = et_title.getText().toString();
         if (GoalTitle == null || Objects.equals(GoalTitle, "")){
-            toastMessage("Please Enter the Title of Your Goal!");
+            toastMessage("Please enter the title of your goal!");
         }
-        else if (Objects.equals(GoalRepeat, "D") && (GoalDToggle == null || Objects.equals(GoalDToggle, ""))){
-            toastMessage("Please Toggle the Repeat Period!");
-        }
-        else if (Objects.equals(GoalRepeat, "W") && (GoalWToggle == null || Objects.equals(GoalWToggle, ""))){
-            toastMessage("Please Toggle the Repeat Period!");
+        else if (Objects.equals(GoalType, "GG")){
+            if (Objects.equals(GoalRepeat, "D") && (GoalDToggle == null || Objects.equals(GoalDToggle, ""))){
+                toastMessage("Please toggle the tepeat period!");
+            }
+            else if (Objects.equals(GoalRepeat, "W") && (GoalWToggle == null || Objects.equals(GoalWToggle, ""))){
+                toastMessage("Please toggle the tepeat period!");
+            }
+            else {
+                AddGoalData(GoalID, GoalTitle, GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache);
+                Intent Back_Main = new Intent(add_goal_.this, MainActivity.class);
+                startActivity(Back_Main);
+            }
         }
         else{
-//            AddGoalData(GoalID, GoalTitle, "This is a test", GoalType);
             AddGoalData(GoalID, GoalTitle, GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache);
             Intent Back_Main = new Intent(add_goal_.this, MainActivity.class);
             startActivity(Back_Main);

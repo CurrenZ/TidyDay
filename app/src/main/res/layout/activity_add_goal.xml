@@ -83,7 +83,7 @@
                         android:background="@android:color/transparent"
                         android:gravity="bottom"
                         android:hint="@string/hint_adding_goal"
-                        android:inputType="text|textCapWords|textAutoCorrect"
+                        android:inputType="text|textCapSentences|textAutoCorrect"
                         android:textColor="@android:color/white"
                         android:textCursorDrawable="@android:color/white" />
 
