@@ -60,6 +60,7 @@ public class add_goal_ extends AppCompatActivity {
     ToggleButton tb_mo, tb_no, tb_ni;
 
     SimpleDateFormat sqldate = new SimpleDateFormat("MMMM d yyyy hh mm aa");
+    SimpleDateFormat sqldate_defualt_time = new SimpleDateFormat("MMMM d yyyy hh 00 aa");
     SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d, yyyy");
     SimpleDateFormat stf = new SimpleDateFormat("h:mm aa");
     SimpleDateFormat sstf = new SimpleDateFormat("h:"+"00"+" aa");
@@ -151,7 +152,7 @@ public class add_goal_ extends AppCompatActivity {
         tb_sun = (ToggleButton) findViewById(R.id.tb_Sun);
 
         long date = System.currentTimeMillis();
-        GoalCalenderCache = sqldate.format(date);
+        GoalCalenderCache = sqldate_defualt_time.format(date);
         String dateString = sdf.format(date);
         String stimeString = sstf.format(date);
         tv_monthly_date.setText(dateString);

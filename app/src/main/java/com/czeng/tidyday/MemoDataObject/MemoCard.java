@@ -35,7 +35,7 @@ public class MemoCard {
                 this.type_image = R.drawable.ic_edit;
                 break;
             default:
-                this.type_image = R.drawable.tidy_day;
+                this.type_image = R.drawable.ic_tidy_day;
         }
     }
 }
