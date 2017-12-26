@@ -111,7 +111,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
                         holder.subtitletxt.setText(getWeeklyDisplayString(UserCal));
                         break;
                     case "M":
-                        holder.subtitletxt.setText("This is get good!");
+                        holder.subtitletxt.setText(getMonthlyDisplayString(position, UserCal));
                         break;
                     case "A":
                         holder.subtitletxt.setText("This is get good!");
@@ -172,7 +172,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
         NowWeekNum = Integer.parseInt(week_number.format(NowCal.getTime().getTime()));
         UserMonth = Integer.parseInt(month_number.format(UserCal.getTime().getTime()));
         NowMonth = Integer.parseInt(month_number.format(NowCal.getTime().getTime()));
-        UserYear =Integer.parseInt(year_number.format(UserCal.getTime().getTime()));
+        UserYear = Integer.parseInt(year_number.format(UserCal.getTime().getTime()));
         NowYear = Integer.parseInt(year_number.format(NowCal.getTime().getTime()));
 
         isThisWeek = (Integer.parseInt(week_number_year.format(UserCal.getTime().getTime())) == Integer.parseInt(week_number_year.format(NowCal.getTime().getTime())));
@@ -318,34 +318,56 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
     private String getMonthlyDisplayString(int position, Calendar UserCal){
         String time_string = std_t.format(UserCal.getTime().getTime());
         String date_string = std_day.format(UserCal.getTime().getTime());
-        if (isToday){
-            return "Get prepared: Today at " + std_t.format(UserCal.getTime().getTime());
-        }
-        else if (isTomorrow){
-            return "Get prepared: Tomorrow at " + std_t.format(UserCal.getTime().getTime());
-        }
+
         switch (goalCards.get(position).getMonthmode()) {
             case "sd":
-                if (isFuture){
-                    if (isThisMonth){
-
-                    }
-                    else {
-
-                    }
+                if (UserDate == NowDate){
+                    return "Get prepared: Today at " + time_string;
                 }
-                else if (isPast){
-                    if (isThisMonth){
-
+                else if (UserDate - NowDate == 1){
+                    return "Get prepared: Tomorrow at " + time_string;
+                }
+                else {
+                    if (isFuture){
+                        if (isThisMonth){
+                            return date_string + " at " + time_string;
+                        }
                     }
-                    else {
-
+                    else if (isPast){
+                        Calendar TargetCal = UserCal;
+                        TargetCal.set(Calendar.YEAR, NowYear - 1);
+                        TargetCal.set(Calendar.MONTH, NowMonth);
+                        return std_day.format(TargetCal.getTime().getTime()) + " at " + std_t.format(UserCal.getTime().getTime()) + ", " + Integer.parseInt(year_number.format(TargetCal.getTime().getTime()));
                     }
                 }
                 break;
             case "xx":
                 break;
+//                Calendar xxCal = UserCal;
+//
+//                //xxCal.set(Calendar.YEAR, NowYear - 1);
+//                xxCal.set(Calendar.MONTH, NowMonth - 1);
+//                xxCal.set(Calendar.DAY_OF_MONTH, 1);
+//                int xxFirstDay = Integer.parseInt(day_number.format(xxCal.getTime().getTime()));
+//                int xxTargetDay = 0;
+//                if (xxFirstDay <= UserDay){
+//                    xxTargetDay = 1 + (xxFirstDay - UserDay) + (UserWeekNum - 1) * 7;
+//                }
+//                else if (xxFirstDay > UserDay){
+//                    xxTargetDay = 1 + (xxFirstDay - UserDay) + UserWeekNum * 7;
+//                }
+//                xxCal.set(Calendar.DAY_OF_MONTH, xxTargetDay);
+//                if (xxTargetDay == NowDate){
+//                    return "Get prepared: Today at " + time_string;
+//                }
+//                else if (xxTargetDay - NowDate == 1){
+//                    return "Get prepared: Tomorrow at " + time_string;
+//                }
+//                else {
+//                    return std_day.format(xxCal.getTime().getTime()) + " at " + std_t.format(UserCal.getTime().getTime()) + ", " + Integer.parseInt(year_number.format(xxCal.getTime().getTime()));
+//                }
         }
+
         return "";
     }
 

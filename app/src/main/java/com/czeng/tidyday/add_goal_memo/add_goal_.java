@@ -55,6 +55,7 @@ public class add_goal_ extends AppCompatActivity {
     RadioButton tv_monthly_xth_xday;
     TextView tv_annually_date;
     EditText et_title;
+    boolean timeSelected = false;
 
     ToggleButton tb_mon, tb_tue, tb_wed, tb_thu, tb_fri, tb_sat, tb_sun;
     ToggleButton tb_mo, tb_no, tb_ni;
@@ -120,7 +121,7 @@ public class add_goal_ extends AppCompatActivity {
         // get max id and pass new id
         GoalID = getMaxID() + 1;
 
-//        toastMessage(String.valueOf(GoalID));
+        // toastMessage(String.valueOf(GoalID));
 
         ll_repeatsection = (LinearLayout) findViewById(R.id.repeat_section);
         ll_qbpsection = (LinearLayout) findViewById(R.id.quit_bad_priority_section);
@@ -152,12 +153,13 @@ public class add_goal_ extends AppCompatActivity {
         tb_sun = (ToggleButton) findViewById(R.id.tb_Sun);
 
         long date = System.currentTimeMillis();
-        GoalCalenderCache = sqldate_defualt_time.format(date);
+//        cal.setTimeInMillis(date);
+//        GoalCalenderCache = sqldate_defualt_time.format(cal.getTime().getTime());
         String dateString = sdf.format(date);
         String stimeString = sstf.format(date);
         tv_monthly_date.setText(dateString);
         tv_onetime_date.setText(dateString);
-        tv_monthly_time.setText(stimeString);
+        tv_monthly_time.setText("Click here to set the time");
         tv_onetime_time.setText(stimeString);
         tv_weekly_time.setText(stimeString);
         String mxx = "On every "+getweekrank(dayofweekinmonthf.format(date))+" "+dayf.format(date);
@@ -194,6 +196,7 @@ public class add_goal_ extends AppCompatActivity {
             public void onClick(View v) {
                 showTimePickerDialog();
                 m_o_w = "mon";
+                timeSelected = true;
             }
         });
 
@@ -202,6 +205,7 @@ public class add_goal_ extends AppCompatActivity {
             public void onClick(View v) {
                 showTimePickerDialog();
                 m_o_w = "one";
+                timeSelected = true;
 
             }
         });
@@ -211,6 +215,7 @@ public class add_goal_ extends AppCompatActivity {
             public void onClick(View v) {
                 showTimePickerDialog();
                 m_o_w = "wee";
+                timeSelected = true;
 
             }
         });
@@ -565,10 +570,14 @@ public class add_goal_ extends AppCompatActivity {
         }
         else if (Objects.equals(GoalType, "GG")){
             if (Objects.equals(GoalRepeat, "D") && (GoalDToggle == null || Objects.equals(GoalDToggle, ""))){
-                toastMessage("Please toggle the tepeat period!");
+                toastMessage("Please toggle the repeat period!");
             }
             else if (Objects.equals(GoalRepeat, "W") && (GoalWToggle == null || Objects.equals(GoalWToggle, ""))){
-                toastMessage("Please toggle the tepeat period!");
+                toastMessage("Please toggle the repeat period!");
+            }
+            else if (Objects.equals(GoalRepeat, "M") && timeSelected == false){
+                toastMessage("Please select the repeat time!");
+
             }
             else {
                 AddGoalData(GoalID, GoalTitle, GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache);
