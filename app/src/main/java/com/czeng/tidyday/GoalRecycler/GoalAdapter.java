@@ -165,6 +165,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
         if (NowTime <= 15 && NowTime >10){isAfternoon = true;} // noon and after noon
         if (NowTime <= 24 && NowTime >15){isNight = true;} //late afternoon and night
 
+        UserDay = Integer.parseInt(day_number.format(UserCal.getTime().getTime()));
         NowDay = Integer.parseInt(day_number.format(NowCal.getTime().getTime()));
         UserDate = Integer.parseInt(day_in_month.format(UserCal.getTime().getTime()));
         NowDate = Integer.parseInt(day_in_month.format(NowCal.getTime().getTime()));
@@ -342,30 +343,41 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
                 }
                 break;
             case "xx":
-                break;
-//                Calendar xxCal = UserCal;
-//
-//                //xxCal.set(Calendar.YEAR, NowYear - 1);
-//                xxCal.set(Calendar.MONTH, NowMonth - 1);
-//                xxCal.set(Calendar.DAY_OF_MONTH, 1);
-//                int xxFirstDay = Integer.parseInt(day_number.format(xxCal.getTime().getTime()));
-//                int xxTargetDay = 0;
-//                if (xxFirstDay <= UserDay){
-//                    xxTargetDay = 1 + (xxFirstDay - UserDay) + (UserWeekNum - 1) * 7;
-//                }
-//                else if (xxFirstDay > UserDay){
-//                    xxTargetDay = 1 + (xxFirstDay - UserDay) + UserWeekNum * 7;
-//                }
-//                xxCal.set(Calendar.DAY_OF_MONTH, xxTargetDay);
-//                if (xxTargetDay == NowDate){
-//                    return "Get prepared: Today at " + time_string;
-//                }
-//                else if (xxTargetDay - NowDate == 1){
-//                    return "Get prepared: Tomorrow at " + time_string;
-//                }
-//                else {
-//                    return std_day.format(xxCal.getTime().getTime()) + " at " + std_t.format(UserCal.getTime().getTime()) + ", " + Integer.parseInt(year_number.format(xxCal.getTime().getTime()));
-//                }
+                Calendar xxCal = UserCal;
+
+                if (NowYear > UserYear){
+                    xxCal.set(Calendar.YEAR, NowYear);
+                    xxCal.set(Calendar.MONTH, NowMonth - 1);
+                }
+                else if (NowYear <= UserYear){
+                    if (isPast) {
+                        xxCal.set(Calendar.MONTH, NowMonth);
+                    }
+                    else {
+                        xxCal.set(Calendar.MONTH, NowMonth - 1);
+                    }
+                }
+
+                xxCal.set(Calendar.DAY_OF_MONTH, 1);
+                int xxFirstDay = Integer.parseInt(day_number.format(xxCal.getTime().getTime()));
+                int xxTargetDate = 0;
+                //return month_number.format(xxCal.getTime().getTime());
+                if (xxFirstDay <= UserDay){
+                    xxTargetDate = 1 - (xxFirstDay - UserDay) + (UserWeekNum - 1) * 7;
+                }
+                else if (xxFirstDay == UserDay){
+                    xxTargetDate = 1;
+                }
+                xxCal.set(Calendar.DAY_OF_MONTH, xxTargetDate);
+                if (xxTargetDate == NowDate){
+                    return "Get prepared: Today at " + time_string;
+                }
+                else if (xxTargetDate - NowDate == 1){
+                    return "Get prepared: Tomorrow at " + time_string;
+                }
+                else {
+                    return std_day.format(xxCal.getTime().getTime()) + " at " + std_t.format(UserCal.getTime().getTime()) + ", " + Integer.parseInt(year_number.format(xxCal.getTime().getTime()));
+                }
         }
 
         return "";
