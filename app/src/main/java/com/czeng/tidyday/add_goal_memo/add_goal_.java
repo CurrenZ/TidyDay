@@ -45,7 +45,7 @@ public class add_goal_ extends AppCompatActivity {
     GoalDataSource dataSource = new GoalDataSource(this);
 
     // Strings that will be stored in db
-    String GoalTitle = "", GoalType = "GG", GoalRepeat = "", GoalDToggle = "", GoalWToggle = "", GoalMMode = "sd", GoalCalenderCache = "";
+    String GoalTitle = "", GoalType = "GG", GoalRepeat = "", GoalDToggle = "", GoalWToggle = "", GoalMMode = "sd", GoalCalenderCache = "", YearRepeat = "";
     int GoalID = 0;
 
     LinearLayout ll_repeatsection, ll_qbpsection, ll_otnotificationsection;
@@ -54,7 +54,7 @@ public class add_goal_ extends AppCompatActivity {
     TextView tv_weekly_time;
     RadioButton tv_monthly_xth_xday;
     TextView tv_annually_date;
-    EditText et_title;
+    EditText et_title, et_year_repeat;
     boolean timeSelected = false;
 
     ToggleButton tb_mon, tb_tue, tb_wed, tb_thu, tb_fri, tb_sat, tb_sun;
@@ -135,6 +135,7 @@ public class add_goal_ extends AppCompatActivity {
         tv_monthly_xth_xday = (RadioButton) findViewById(R.id.rb_monthly_xth_xday);
         tv_annually_date = (TextView) findViewById(R.id.annually_date);
         et_title = (EditText) findViewById(R.id.goal_title_et);
+        et_year_repeat = (EditText) findViewById(R.id.every_year);
 
         DailyOption = (LinearLayout) findViewById(R.id.daily);
         WeeklyOption = (LinearLayout) findViewById(R.id.weekly);
@@ -526,9 +527,9 @@ public class add_goal_ extends AppCompatActivity {
         goalAdapter.notifyItemInserted(0);
     }
 
-    public void AddGoalData(int id, String title, String type, String repeat, String dtoggle, String wtoggle, String mmode, String cal){
+    public void AddGoalData(int id, String title, String type, String repeat, String dtoggle, String wtoggle, String mmode, String cal, String yearrepeat){
         dataSource.open();
-        dataSource.insertGoal(id, title, type, repeat, dtoggle, wtoggle, mmode, cal);
+        dataSource.insertGoal(id, title, type, repeat, dtoggle, wtoggle, mmode, cal, yearrepeat);
         dataSource.close();
         goalAdapter.notifyItemInserted(0);
     }
@@ -565,6 +566,7 @@ public class add_goal_ extends AppCompatActivity {
     public void SaveAndCloseGoal(View view) {
 
         GoalTitle = et_title.getText().toString();
+        YearRepeat = et_year_repeat.getText().toString();
         if (GoalTitle == null || Objects.equals(GoalTitle, "")){
             toastMessage("Please enter the title of your goal!");
         }
@@ -580,13 +582,13 @@ public class add_goal_ extends AppCompatActivity {
 
             }
             else {
-                AddGoalData(GoalID, GoalTitle, GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache);
+                AddGoalData(GoalID, GoalTitle, GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache, YearRepeat);
                 Intent Back_Main = new Intent(add_goal_.this, MainActivity.class);
                 startActivity(Back_Main);
             }
         }
         else{
-            AddGoalData(GoalID, GoalTitle, GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache);
+            AddGoalData(GoalID, GoalTitle, GoalType, GoalRepeat, GoalDToggle, GoalWToggle, GoalMMode, GoalCalenderCache, YearRepeat);
             Intent Back_Main = new Intent(add_goal_.this, MainActivity.class);
             startActivity(Back_Main);
         }

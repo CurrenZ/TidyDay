@@ -383,6 +383,11 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
         return "";
     }
 
+    private String getYearlyDisplayString(Calendar NowCal, Calendar UserCal){
+
+        return "";
+    }
+
     @Override
     public int getItemCount() {
         return goalCards.size();
