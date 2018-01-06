@@ -60,8 +60,11 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
     private int UserWeekNum = 0;
     private int NowWeekNum = 0;
 
+    private int YearRepeat = 0;
+
     private SimpleDateFormat format_user = new SimpleDateFormat("MMMM d yyyy hh 00 aa");
     private SimpleDateFormat std_day = new SimpleDateFormat("EEE, MMM d");
+    private SimpleDateFormat std_date = new SimpleDateFormat("EEE, MMM d, yyyy");
     private SimpleDateFormat std_t = new SimpleDateFormat("h:mm aa");
 
 
@@ -114,7 +117,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
                         holder.subtitletxt.setText(getMonthlyDisplayString(position, UserCal));
                         break;
                     case "A":
-                        holder.subtitletxt.setText("This is get good!");
+                        holder.subtitletxt.setText(getYearlyDisplayString(NowCal, UserCal, YearRepeat));
                         break;
                 }
                 break;
@@ -139,6 +142,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
     }
 
     private void sortTime(Calendar NowCal, Calendar UserCal, int position){
+        YearRepeat =  Integer.parseInt(goalCards.get(position).getYearrepeat());
         String dayt = goalCards.get(position).getDaytoggle();
         if (dayt.contains("mo")){hasMorning = true;}
         if (dayt.contains("no")){hasAfternoon = true;}
@@ -383,9 +387,21 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalHolder>{
         return "";
     }
 
-    private String getYearlyDisplayString(Calendar NowCal, Calendar UserCal){
+    private String getYearlyDisplayString(Calendar NowCal, Calendar UserCal, int YearRepeat){
+        Calendar annualCal = UserCal;
+        if (NowYear > UserYear){
+            while (Integer.parseInt(year_number.format(annualCal.getTime().getTime())) < Integer.parseInt(year_number.format(NowCal.getTime().getTime()))){
+                annualCal.add(Calendar.YEAR, YearRepeat);
+            }
+            return "ok";
+        }
+        else if ((NowYear == UserYear) && isPast){
+            annualCal.add(Calendar.YEAR, YearRepeat);
+        }
 
-        return "";
+        //return std_date.format(annualCal.getTime().getTime());
+        return Integer.toString(UserYear) + " + " + Integer.toString(YearRepeat);
+        //return std_date.format(annualCal.getTime().getTime());
     }
 
     @Override
