@@ -12,8 +12,9 @@ public class GoalCard {
     private String weektoggle;
     private String monthmode;
     private String calcache;
+    private String yearrepeat;
 
-    public GoalCard(int id, String title, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String calcache) {
+    public GoalCard(int id, String title, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String calcache, String yearrepeat) {
         this.id = id;
         this.title = title;
         this.type = type;
@@ -22,17 +23,33 @@ public class GoalCard {
         this.weektoggle = weektoggle;
         this.monthmode = monthmode;
         this.calcache = calcache;
+        this.yearrepeat = yearrepeat;
     }
 
-    public GoalCard(int id, String title, String type) {
-        this.title = title;
-        this.type = type;
-        this.id = id;
-    }
+//    public GoalCard(int id, String title, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String calcache) {
+//        this.id = id;
+//        this.title = title;
+//        this.type = type;
+//        this.repeat = repeat;
+//        this.daytoggle = daytoggle;
+//        this.weektoggle = weektoggle;
+//        this.monthmode = monthmode;
+//        this.calcache = calcache;
+//    }
+//
+//    public GoalCard(int id, String title, String type) {
+//        this.title = title;
+//        this.type = type;
+//        this.id = id;
+//    }
+//
+//    public GoalCard(String title, String type) {
+//        this.title = title;
+//        this.type = type;
+//    }
 
-    public GoalCard(String title, String type) {
-        this.title = title;
-        this.type = type;
+    public String getYearrepeat() {
+        return yearrepeat;
     }
 
     public String getRepeat() {
@@ -69,6 +86,10 @@ public class GoalCard {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setYearrepeat(String yearrepeat) {
+        this.yearrepeat = yearrepeat;
     }
 
     public void setRepeat(String repeat) {

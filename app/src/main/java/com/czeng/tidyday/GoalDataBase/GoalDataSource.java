@@ -28,7 +28,8 @@ public class GoalDataSource {
             GoalContract.GoalEntry.COL_DAYTOGGLE,
             GoalContract.GoalEntry.COL_WEEkTOGGLE,
             GoalContract.GoalEntry.COL_MONTHTMODE,
-            GoalContract.GoalEntry.COL_CAL
+            GoalContract.GoalEntry.COL_CAL,
+            GoalContract.GoalEntry.COL_YEAR_REPEAT
     };
 
     public GoalDataSource(Context context){
@@ -77,7 +78,8 @@ public class GoalDataSource {
             String weektoggle = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_WEEkTOGGLE));
             String monthmode = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_MONTHTMODE));
             String cal = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_CAL));
-            goalCard = new GoalCard(id, title, type, repeat, daytoggle, weektoggle, monthmode, cal);
+            String yearrepeat = cursor.getString(cursor.getColumnIndex(GoalContract.GoalEntry.COL_YEAR_REPEAT));
+            goalCard = new GoalCard(id, title, type, repeat, daytoggle, weektoggle, monthmode, cal, yearrepeat);
             list_goalCards.add(goalCard);
         }
         return list_goalCards;
@@ -104,7 +106,7 @@ public class GoalDataSource {
         Log.i(GoalDatabaseHelper.DATABASE_NAME, "added name id:" + insertGoal);
     }
 
-    public void insertGoal (int id, String title, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String cal){
+    public void insertGoal (int id, String title, String type, String repeat, String daytoggle, String weektoggle, String monthmode, String cal, String yearrepeat){
         ContentValues values = new ContentValues();
         values.put(GoalContract.GoalEntry._ID, id);
         values.put(GoalContract.GoalEntry.COL_TITLE, title);
@@ -114,6 +116,7 @@ public class GoalDataSource {
         values.put(GoalContract.GoalEntry.COL_WEEkTOGGLE, weektoggle);
         values.put(GoalContract.GoalEntry.COL_MONTHTMODE, monthmode);
         values.put(GoalContract.GoalEntry.COL_CAL, cal);
+        values.put(GoalContract.GoalEntry.COL_YEAR_REPEAT, yearrepeat);
 
         long insertGoal = database.insert(GoalContract.GoalEntry.TABLE_NAME, null, values);
         Log.i(GoalDatabaseHelper.DATABASE_NAME, "added name id:" + insertGoal);

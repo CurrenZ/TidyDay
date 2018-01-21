@@ -13,5 +13,6 @@ public class GoalContract {
         public static final String COL_WEEkTOGGLE = "weekToggle";
         public static final String COL_MONTHTMODE = "monthMode";
         public static final String COL_CAL = "calenderCache";
+        public static final String COL_YEAR_REPEAT = "Year_Repeat";
     }
 }
